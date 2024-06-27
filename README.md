@@ -40,7 +40,7 @@ npm install
 Run the following;
 
 ```javascript
-npm install
+npm run dev
 ```
 The application should start running on `http://localhost:3000`.
 
