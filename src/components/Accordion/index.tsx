@@ -17,12 +17,14 @@ const Accordion: React.FC<AccordionProps> = ({ headerText, panelText, idx }) => 
           aria-controls={`accordion_panel_${idx}`}
         >
           <span>{headerText}</span>
-          {expanded ? <OpenAccordion /> : <CloseAccordion />}
+          {expanded ? <CloseAccordion /> : <OpenAccordion />}
         </button>
       </h3>
-      <section id={`accordion_panel_${idx}`} aria-labelledby='accordion_header' hidden={expanded}>
-        {panelText}
-      </section>
+      {expanded && (
+        <section id={`accordion_panel_${idx}`} aria-labelledby='accordion_header'>
+          {panelText}
+        </section>
+      )}
     </div>
   );
 };
