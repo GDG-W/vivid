@@ -1,14 +1,12 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono',
-    'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
-    'Courier New', monospace;
 
+  // COLORS
   --pastel-green: #ccf6c5;
   --white: #ffffff;
   --black: #1e1e1e;
-  --gray: #808080;
+  --gray-10: #e6e6e6;
+  --gray-50: #808080;
 }
 
 // @media (prefers-color-scheme: dark) {

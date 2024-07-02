@@ -1,14 +1,16 @@
 .main {
-  padding: 30px;
+  padding: 10px;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: var(--pastel-green);
 
-  // .test {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
+  .test {
+    // padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
 }
