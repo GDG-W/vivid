@@ -8,3 +8,70 @@
 
 @import 'utils/breakpoints';
 @import 'utils/mixins';
+
+body {
+  background-color: #ccf6c5;
+}
+
+li {
+  list-style-type: none;
+}
+
+.faq {
+  padding: 90px 24px 84px;
+}
+
+.faq-header {
+  color: #1c1c1c;
+}
+
+.q-a {
+  color: #666666;
+}
+
+// .tab-block {
+// }
+
+.tablist {
+  display: flex;
+  gap: 16px;
+}
+
+.tab {
+  color: #9a9a9a;
+}
+
+// .tablist {
+//     list-style: disc;
+// }
+
+.tabpanel-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tabpanel-item {
+  width: 342px;
+  background-color: white;
+  color: #808080;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+.tabpanel-item h4 {
+  color: #1e1e1e;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header-button {
+  border: none;
+  // padding: 8px 16px;
+  width: 24px;
+  height: 24px;
+}
