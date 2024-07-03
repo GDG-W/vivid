@@ -23,8 +23,8 @@ To get started, follow these steps:
 1. **Clone the Repository**
 
 ```javascript
-git clone https://github.com/GDG-W/vivid.git
-cd vivid
+git clone https://github.com/GDG-W/Hogwarts
+cd Hogwarts
 code .
 ```
 

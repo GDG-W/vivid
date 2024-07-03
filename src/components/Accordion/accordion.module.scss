@@ -1,0 +1,50 @@
+@import 'utils/breakpoints';
+
+.accordion {
+  width: 37.5rem;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 20px;
+  padding: 1.75rem;
+
+  @include media('<tablet') {
+    width: 22rem;
+  }
+
+  @include media('<420px') {
+    width: 100%;
+  }
+
+  h3 {
+    button {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 1.125rem;
+      font-family: var(--generalSans);
+      color: var(--black);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      @include media('<=phone') {
+        font-size: 1rem;
+      }
+
+      span {
+        max-width: 90%;
+        word-wrap: break-word;
+        text-align: left;
+      }
+    }
+  }
+
+  section {
+    color: var(--gray-50);
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--generalSans);
+    padding-block: 0.625rem;
+  }
+}
