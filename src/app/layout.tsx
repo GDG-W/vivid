@@ -37,11 +37,12 @@ const GeneralSans = localFont({
       style: 'normal',
     },
   ],
+  variable: '--generalSans',
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={classNames(GeistSans.className, GeneralSans.className)}>
+    <html lang='en' className={classNames(GeneralSans.variable, GeistSans.className)}>
       <body>
         <ReactQueryProvider>
           {/* Your layout content, including header, main content, footer, etc goes here. */}
