@@ -16,7 +16,6 @@ The project comes pre-configured with:
 - [**TanStack Query**](https://tanstack.com/query/latest)- Powerful data-fetching and state management for React applications.
 - [**next/third-party**](https://nextjs.org/docs/app/building-your-application/optimizing/third-party-libraries) - Integrations and configurations for using third-party packages with Next.js.
 
-
 ## Getting Started
 
 To get started, follow these steps:
@@ -30,18 +29,19 @@ code .
 ```
 
 2. **Install Dependencies**
-Navigate to the project directory and install the required dependencies.
+   Navigate to the project directory and install the required dependencies.
 
 ```javascript
 npm install
 ```
 
 3. **Start the project**
-Run the following;
+   Run the following;
 
 ```javascript
 npm run dev
 ```
+
 The application should start running on `http://localhost:3000`.
 
 ## Contributing

@@ -1,17 +1,13 @@
 @import 'utils/breakpoints';
 
 .accordion {
-  width: 37.5rem;
+  width: 45rem;
   background-color: var(--white);
   color: var(--black);
   border-radius: 20px;
   padding: 1.75rem;
 
-  @include media('<tablet') {
-    width: 22rem;
-  }
-
-  @include media('<420px') {
+  @include media('<=tablet') {
     width: 100%;
   }
 
@@ -22,6 +18,7 @@
       justify-content: space-between;
       align-items: flex-start;
       font-size: 1.125rem;
+      font-weight: 500;
       font-family: var(--generalSans);
       color: var(--black);
       border: none;
@@ -30,6 +27,7 @@
 
       @include media('<=phone') {
         font-size: 1rem;
+        font-weight: 500;
       }
 
       span {

@@ -1,0 +1,129 @@
+@import 'utils/breakpoints';
+
+.faq {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pastel-green);
+  color: var(--black);
+  font-family: var(--generalSans);
+
+  .container {
+    // width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5.6rem 1.5rem;
+    min-height: 100vh;
+    // border: 2px solid black;
+
+    @include media('<=tablet') {
+      display: block;
+      padding-inline: 1.5rem;
+      width: 100vw;
+    }
+
+    .qa {
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+      align-self: flex-start;
+
+      @include media('<=tablet') {
+        font-size: 1rem;
+      }
+    }
+
+    .heading1 {
+      align-self: flex-start;
+      color: var(--gray-90);
+      font-family: 'Geist', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 70px;
+      margin-bottom: 0.25rem;
+
+      @include media('<=tablet') {
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
+    }
+
+    .heading2 {
+      align-self: flex-start;
+      color: var(--gray-60);
+      font-family: 'Geist', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 70px;
+      margin-bottom: 1.5rem;
+
+      @include media('<=tablet') {
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
+    }
+
+    .tabs {
+      width: 100%;
+      display: flex;
+      gap: 5rem;
+
+      @include media('<=tablet') {
+        display: block;
+      }
+
+      .nav {
+        margin-top: 4.5rem;
+
+        @include media('<=tablet') {
+          margin-top: 0rem;
+        }
+
+        .tablist {
+          display: flex;
+          flex-direction: column;
+          align-items: baseline;
+          gap: 1rem;
+          white-space: nowrap;
+          overflow-x: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          @include media('<=tablet') {
+            flex-direction: row;
+          }
+
+          & > button {
+            background-color: transparent;
+            border: inherit;
+            color: var(--gray-40);
+            font-family: var(--generalSans);
+            font-weight: 500;
+          }
+        }
+      }
+
+      .tabheading {
+        color: var(--gray-90);
+        font-family: 'Geist', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .accordionlist {
+        // flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        max-height: 550px;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+  }
+}
