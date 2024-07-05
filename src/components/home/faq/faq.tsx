@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from './faq.module.scss';
 import Accordion from '@/components/accordion';
+import GreenCircle from '../../../../public/green-circle.svg';
 import data from './mock-faq.json';
 
 // TODO: Conditionally display green circles with tab list items
@@ -31,14 +32,14 @@ const FAQs = () => {
                   aria-selected={activeTab === item.category}
                   type='button'
                 >
-                  <span></span>
+                  <GreenCircle />
                   <span>{item.category}</span>
                 </button>
               ))}
             </div>
           </nav>
           <div>
-            <h1 className={styles.tabheading}>General Questions</h1>
+            <h1 className={styles.tabheading}>{activeTab}</h1>
             <div className={styles.accordionlist}>
               {activeCategory?.questions.map((q, idx) => (
                 <div role='tabpanel' id={`panels-${idx}`} aria-labelledby={`tab-${idx}`} key={idx}>

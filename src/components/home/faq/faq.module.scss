@@ -96,6 +96,9 @@
           }
 
           & > button {
+            display: flex;
+            align-items: center;
+            gap: 16px;
             background-color: transparent;
             border: inherit;
             color: var(--gray-40);
