@@ -1,16 +1,8 @@
-.main {
-  padding: 10px;
+.test {
   min-height: 100vh;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   background-color: var(--pastel-green);
-
-  .test {
-    // padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }

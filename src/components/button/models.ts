@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 
-export type ButtonProps = React.DetailedHTMLProps<
+export type Props = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
 
-export type CTAButtonProps = {
+export type ButtonProps = {
   onClick?: () => void;
   icon?: string | ReactNode;
   outlined?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent';
   text: string;
-} & ButtonProps;
+} & Props;

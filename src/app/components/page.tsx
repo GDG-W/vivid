@@ -1,10 +1,10 @@
 'use client';
-import Accordion from '@/components/Accordion';
-import CTAButton from '@/components/CTAButton';
+import Accordion from '@/components/accordion';
+import CTAButton from '@/components/button';
 import Calendar from '../../../public/icons/calendar-black.svg';
 import WhiteCalendar from '../../../public/icons/calendar-white.svg';
 import ArrowRight from '../../../public/icons/arrow-right.svg';
-import Header from '@/components/Header';
+import Header from '@/components/header';
 
 const TestPage = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import { CTAButtonProps } from './models';
+import { ButtonProps } from './models';
 import styles from './button.module.scss';
 import { classNames } from '@/utils/classNames';
 
-const CTAButton: React.FC<CTAButtonProps> = ({ variant = 'primary', text, icon, outlined }) => {
+const Button: React.FC<ButtonProps> = ({ variant = 'primary', text, icon, outlined }) => {
   const classes = classNames(
     styles.cta,
     variant == 'primary' && styles.primary,
@@ -20,4 +20,4 @@ const CTAButton: React.FC<CTAButtonProps> = ({ variant = 'primary', text, icon, 
   );
 };
 
-export default CTAButton;
+export default Button;

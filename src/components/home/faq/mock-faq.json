@@ -1,0 +1,113 @@
+[
+  {
+    "category": "General Questions",
+    "questions": [
+      {
+        "question": "What is the date and time of the event?",
+        "answer": "The event will be held on August 15, 2024, from 10:00 AM to 6:00 PM."
+      },
+      {
+        "question": "Where is the event location?",
+        "answer": "The event will take place at the Downtown Convention Center, 123 Main Street, Cityville."
+      },
+      {
+        "question": "Is there parking available?",
+        "answer": "Yes, there is ample parking available at the venue. Parking fees may apply."
+      },
+      {
+        "question": "Are there any age restrictions for the event?",
+        "answer": "The event is open to all ages. However, some sessions may be geared towards adults."
+      },
+      {
+        "question": "What is the date and time of the event?",
+        "answer": "The event will be held on August 15, 2024, from 10:00 AM to 6:00 PM."
+      },
+      {
+        "question": "Where is the event location?",
+        "answer": "The event will take place at the Downtown Convention Center, 123 Main Street, Cityville."
+      },
+      {
+        "question": "Is there parking available?",
+        "answer": "Yes, there is ample parking available at the venue. Parking fees may apply."
+      },
+      {
+        "question": "Are there any age restrictions for the event?",
+        "answer": "The event is open to all ages. However, some sessions may be geared towards adults."
+      }
+    ]
+  },
+  {
+    "category": "Claiming Your Ticket",
+    "questions": [
+      {
+        "question": "How do I claim my ticket?",
+        "answer": "You can claim your ticket by logging into your account on our website and downloading it from the 'My Tickets' section."
+      },
+      {
+        "question": "Can I transfer my ticket to someone else?",
+        "answer": "Yes, tickets are transferable. You can transfer your ticket by logging into your account and updating the attendee information."
+      },
+      {
+        "question": "Do I need to print my ticket?",
+        "answer": "You can either print your ticket or show the digital version on your mobile device at the entrance."
+      },
+      {
+        "question": "What should I do if I haven't received my ticket?",
+        "answer": "If you haven't received your ticket, please check your spam folder. If it's not there, contact our support team at support@event.com."
+      },
+      {
+        "question": "How do I claim my ticket?",
+        "answer": "You can claim your ticket by logging into your account on our website and downloading it from the 'My Tickets' section."
+      },
+      {
+        "question": "Can I transfer my ticket to someone else?",
+        "answer": "Yes, tickets are transferable. You can transfer your ticket by logging into your account and updating the attendee information."
+      },
+      {
+        "question": "Do I need to print my ticket?",
+        "answer": "You can either print your ticket or show the digital version on your mobile device at the entrance."
+      },
+      {
+        "question": "What should I do if I haven't received my ticket?",
+        "answer": "If you haven't received your ticket, please check your spam folder. If it's not there, contact our support team at support@event.com."
+      }
+    ]
+  },
+  {
+    "category": "Upgrading Your Ticket",
+    "questions": [
+      {
+        "question": "How can I upgrade my ticket?",
+        "answer": "To upgrade your ticket, log into your account, go to 'My Tickets,' and select the upgrade option for your ticket."
+      },
+      {
+        "question": "What are the benefits of upgrading my ticket?",
+        "answer": "Upgraded tickets offer additional benefits such as VIP seating, access to exclusive sessions, and complimentary refreshments."
+      },
+      {
+        "question": "Is there a deadline for ticket upgrades?",
+        "answer": "Yes, ticket upgrades must be completed at least 24 hours before the event."
+      },
+      {
+        "question": "Will I receive a new ticket after upgrading?",
+        "answer": "Yes, a new ticket with the upgraded benefits will be emailed to you after the upgrade is complete."
+      },
+      {
+        "question": "How can I upgrade my ticket?",
+        "answer": "To upgrade your ticket, log into your account, go to 'My Tickets,' and select the upgrade option for your ticket."
+      },
+      {
+        "question": "What are the benefits of upgrading my ticket?",
+        "answer": "Upgraded tickets offer additional benefits such as VIP seating, access to exclusive sessions, and complimentary refreshments."
+      },
+      {
+        "question": "Is there a deadline for ticket upgrades?",
+        "answer": "Yes, ticket upgrades must be completed at least 24 hours before the event."
+      },
+      {
+        "question": "Will I receive a new ticket after upgrading?",
+        "answer": "Yes, a new ticket with the upgraded benefits will be emailed to you after the upgrade is complete."
+      }
+    ]
+  }
+]
