@@ -1,9 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './faq.module.scss';
 import Accordion from '@/components/accordion';
+import data from './mock-faq.json';
+
+// TODO: Conditionally display green circles with tab list items
 
 const FAQs = () => {
+  const [activeTab, setActiveTab] = useState(data[0].category);
+  const activeCategory = data.find((item) => item.category === activeTab);
+
   return (
     <section className={styles.faq}>
       <div className={styles.container}>
@@ -14,51 +20,31 @@ const FAQs = () => {
         <div className={styles.tabs}>
           <nav className={styles.nav}>
             <div className={styles.tablist} role='tablist'>
-              <button role='tab' type='button'>
-                <span></span>
-                <span>General Questions</span>
-              </button>
-              <button role='tab' type='button'>
-                <span></span>
-                <span>Claiming Ticket</span>
-              </button>
-              <button role='tab' type='button'>
-                <span></span>
-                <span>Upgrading ticket</span>
-              </button>
+              {data.map((item, index) => (
+                <button
+                  key={index}
+                  className={`${styles.tab} ${activeTab === item.category ? styles.active : ''}`}
+                  onClick={() => setActiveTab(item.category)}
+                  role='tab'
+                  id={`tab-${index}`}
+                  aria-controls={`panel-${index}`}
+                  aria-selected={activeTab === item.category}
+                  type='button'
+                >
+                  <span></span>
+                  <span>{item.category}</span>
+                </button>
+              ))}
             </div>
           </nav>
           <div>
             <h1 className={styles.tabheading}>General Questions</h1>
             <div className={styles.accordionlist}>
-              <Accordion
-                headerText='Can I buy tickets for the event through this platform?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='Can I cancel my ticket and get a refund?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='Can I buy tickets for the event through this platform?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='How many tickets are available for sale?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='Can I buy tickets for the event through this platform?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='Can I buy tickets for the event through this platform?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
-              <Accordion
-                headerText='Can I buy tickets for the event through this platform?'
-                panelText='Yes! This platform allows you to securely purchase tickets for the one-day or two-day event option.'
-              />
+              {activeCategory?.questions.map((q, idx) => (
+                <div role='tabpanel' id={`panels-${idx}`} aria-labelledby={`tab-${idx}`} key={idx}>
+                  <Accordion headerText={q.question} panelText={q.answer} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

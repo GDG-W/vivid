@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './accordion.module.scss';
 import { AccordionProps } from './models';
 import CloseAccordion from '../../../public/icons/minus-circle.svg';
@@ -6,6 +6,11 @@ import OpenAccordion from '../../../public/icons/add-circle.svg';
 
 const Accordion: React.FC<AccordionProps> = ({ headerText, panelText, idx }) => {
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [headerText, panelText]);
+
   return (
     <div className={styles.accordion}>
       <h3>

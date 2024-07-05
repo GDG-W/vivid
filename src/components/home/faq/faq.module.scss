@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     padding: 5.6rem 1.5rem;
-    min-height: 100vh;
+    // min-height: 100vh;
     // border: 2px solid black;
 
     @include media('<=tablet') {
@@ -42,7 +42,6 @@
       font-size: 3.5rem;
       font-weight: 600;
       line-height: 70px;
-      margin-bottom: 0.25rem;
 
       @include media('<=tablet') {
         font-size: 1.5rem;
@@ -75,7 +74,7 @@
       }
 
       .nav {
-        margin-top: 4.5rem;
+        margin-top: 5rem;
 
         @include media('<=tablet') {
           margin-top: 0rem;
@@ -100,8 +99,13 @@
             background-color: transparent;
             border: inherit;
             color: var(--gray-40);
+            cursor: pointer;
             font-family: var(--generalSans);
             font-weight: 500;
+
+            &.active {
+              color: var(--black);
+            }
           }
         }
       }
@@ -111,18 +115,35 @@
         font-family: 'Geist', sans-serif;
         font-size: 1.75rem;
         font-weight: 500;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         margin-bottom: 1rem;
       }
 
       .accordionlist {
-        // flex-grow: 1;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        max-height: 550px;
+        padding-right: 15px;
+        max-height: 33.5rem;
         overflow-y: auto;
         overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+          background: var(--white);
+          border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: var(--gray-80);
+          border-radius: 10px;
+        }
+
+        @include media('<=tablet') {
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
       }
     }
   }
