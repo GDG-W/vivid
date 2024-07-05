@@ -1,0 +1,26 @@
+@import 'utils/breakpoints';
+
+.purchase {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pastel-yellow);
+  color: var(--black);
+  font-family: var(--generalSans);
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5.6rem 1.5rem;
+    min-height: 100vh;
+
+    .ticketdetails {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
