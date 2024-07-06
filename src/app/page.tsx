@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer';
 import FAQs from '@/components/home/faq/faq';
 import PurchaseYourTicket from '@/components/home/ticket-details/purchase';
 
@@ -7,6 +8,7 @@ export default function Home() {
       <div className='container'>
         <PurchaseYourTicket />
         <FAQs />
+        <Footer />
       </div>
     </main>
   );
