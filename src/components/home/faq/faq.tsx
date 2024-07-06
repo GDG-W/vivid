@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from './faq.module.scss';
 import Accordion from '@/components/accordion';
-import GreenCircle from '../../../../public/green-circle.svg';
 import data from './mock-faq.json';
 
 // TODO: Conditionally display green circles with tab list items
@@ -32,7 +32,7 @@ const FAQs = () => {
                   aria-selected={activeTab === item.category}
                   type='button'
                 >
-                  <GreenCircle />
+                  <Image src='/green-faq-circle.svg' width={20} height={20} alt='list decorator' />
                   <span>{item.category}</span>
                 </button>
               ))}
