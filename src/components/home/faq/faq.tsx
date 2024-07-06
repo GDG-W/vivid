@@ -28,11 +28,15 @@ const FAQs = () => {
                   onClick={() => setActiveTab(item.category)}
                   role='tab'
                   id={`tab-${index}`}
-                  aria-controls={`panel-${index}`}
-                  aria-selected={activeTab === item.category}
                   type='button'
                 >
-                  <Image src='/green-faq-circle.svg' width={20} height={20} alt='list decorator' />
+                  <Image
+                    className={styles.listDecorator}
+                    src='/green-faq-circle.svg'
+                    width={20}
+                    height={20}
+                    alt='list decorator'
+                  />
                   <span>{item.category}</span>
                 </button>
               ))}
@@ -42,7 +46,7 @@ const FAQs = () => {
             <h1 className={styles.tabheading}>{activeTab}</h1>
             <div className={styles.accordionlist}>
               {activeCategory?.questions.map((q, idx) => (
-                <div role='tabpanel' id={`panels-${idx}`} aria-labelledby={`tab-${idx}`} key={idx}>
+                <div role='tabpanel' aria-labelledby={`tab-${idx}`} key={idx}>
                   <Accordion headerText={q.question} panelText={q.answer} />
                 </div>
               ))}

@@ -10,20 +10,11 @@
   font-family: var(--generalSans);
 
   .container {
-    // width: 90vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 5.6rem 1.5rem;
-    // min-height: 100vh;
     // border: 2px solid black;
-
-    @include media('<=tablet') {
-      display: block;
-      padding-inline: 1.5rem;
-      width: 100vw;
-    }
 
     .qa {
       font-size: 1.125rem;
@@ -67,7 +58,8 @@
     .tabs {
       width: 100%;
       display: flex;
-      gap: 5rem;
+      justify-content: space-evenly;
+      gap: 3.5rem;
 
       @include media('<=tablet') {
         display: block;
@@ -109,6 +101,13 @@
             &.active {
               color: var(--black);
             }
+
+            .listDecorator {
+              display: block;
+              @include media('<=tablet') {
+                display: none;
+              }
+            }
           }
         }
       }
@@ -143,6 +142,7 @@
         }
 
         @include media('<=tablet') {
+          padding-right: 0px;
           &::-webkit-scrollbar {
             display: none;
           }

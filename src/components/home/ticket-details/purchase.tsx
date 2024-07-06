@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+// import YellowTicket from '../../../../public/yelloww.svg'
 import styles from './purchase.module.scss';
 import { classNames } from '@/utils/classNames';
 import Image from 'next/image';
@@ -10,18 +11,16 @@ const PurchaseYourTicket = () => {
   return (
     <section className={styles.purchase}>
       <div className={classNames(styles.container)}>
-        <h1>Purchase Your Tickets</h1>
-        <p>Purchase Tickets for yourself, or your group of friends</p>
+        <div className={styles.heading}>
+          <h1>Purchase your tickets</h1>
+          <p>Purchase tickets for one or two-day access; for yourself, or your group of friends.</p>
+        </div>
 
         <div className={styles.ticketdetails}>
-          <Image
-            src='/big-yellow-ticket.svg'
-            width={650}
-            height={350}
-            alt='An image of the one-day ticket'
-            quality={100}
-          />
-
+          <div className={styles.ticketImage}>
+            {/* <YellowTicket /> */}
+            <Image src='/yelloww.svg' alt='An image of the one-day ticket' fill />
+          </div>
           <div>
             <h2>1 day access only | N20,000</h2>
             <ul>

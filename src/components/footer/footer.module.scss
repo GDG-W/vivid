@@ -31,6 +31,7 @@
         font-weight: 600;
         border-radius: 22px;
         padding: 0.3rem 0.5rem;
+        width: -moz-fit-content;
         width: fit-content;
         margin-bottom: 1.2rem;
         font-size: 18px;
@@ -83,6 +84,7 @@
       button {
         margin: 2.7rem 0;
         padding: 23px 54px;
+        width: -moz-fit-content;
         width: fit-content;
       }
 

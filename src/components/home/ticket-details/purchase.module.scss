@@ -1,16 +1,5 @@
 @import 'utils/breakpoints';
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @include media('<=tablet') {
-    padding: 0 14px;
-  }
-}
-
 .purchase {
   width: 100%;
   display: flex;
@@ -21,17 +10,57 @@
   font-family: var(--generalSans);
 
   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    // padding: 0 20px;
     padding: 5.6rem 1.5rem;
-    min-height: 100vh;
+    // min-height: 100vh;
+
+    @include media('<=tablet') {
+      padding: 0 14px;
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 6rem;
+
+      h1 {
+        font-family: 'Geist', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
 
     .ticketdetails {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @include media('<=tablet') {
+        display: block;
+      }
+
+      .ticketImage {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        aspect-ratio: 939.5/444.17;
+        // border: 2px solid black;
+
+        @include media('<=tablet') {
+          display: block;
+        }
+
+        img {
+          box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+        }
+      }
     }
   }
 }
