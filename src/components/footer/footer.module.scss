@@ -1,0 +1,161 @@
+@import 'utils/breakpoints';
+
+.footerwrapper {
+  background-color: var(--dv-blue);
+  padding: 9rem 0 4rem;
+  color: var(--gray-90);
+  font-weight: 200;
+  color: var(--black);
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include media('<=tablet') {
+      padding: 0 14px;
+    }
+  }
+
+  .footermain {
+    display: flex;
+    gap: 6rem;
+
+    div:nth-of-type(1) {
+      width: 52%;
+
+      .aboutpill {
+        background-color: var(--white);
+        border: 1px solid #000000;
+        font-weight: 600;
+        border-radius: 22px;
+        padding: 0.3rem 0.5rem;
+        width: fit-content;
+        margin-bottom: 1.2rem;
+        font-size: 18px;
+      }
+
+      p {
+        line-height: 1.5rem;
+      }
+
+      p:nth-of-type(2) {
+        margin-top: 1.5rem;
+      }
+
+      span {
+        font-weight: 400;
+      }
+
+      .socials {
+        margin-top: 1rem;
+
+        p {
+          font-weight: 500;
+        }
+
+        > div {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          margin-top: 0.7rem;
+        }
+      }
+
+      @include media('<=desktop') {
+        width: 50%;
+      }
+
+      @include media('<=tablet') {
+        width: 100%;
+      }
+    }
+
+    div:nth-of-type(2) {
+      width: 48%;
+
+      .footerlogo {
+        width: 300px;
+        height: 90px;
+      }
+
+      button {
+        margin: 2.7rem 0;
+        padding: 23px 54px;
+        width: fit-content;
+      }
+
+      .footerlinks {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        row-gap: 3rem;
+        column-gap: 3rem;
+
+        ul {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 1.7rem;
+          font-weight: 400;
+
+          li {
+            text-decoration: underline;
+            font-size: 14px;
+            line-height: 24px;
+          }
+        }
+      }
+
+      @include media('<=desktop') {
+        width: 50%;
+        max-width: 320px;
+      }
+
+      @include media('<=tablet') {
+        width: 100%;
+
+        .footerlogo {
+          width: 250px;
+        }
+      }
+
+      @include media('<=phone') {
+        .footerlogo {
+          width: 100%;
+        }
+      }
+    }
+
+    @include media('<=desktop') {
+      gap: 3rem;
+    }
+
+    @include media('<=tablet') {
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    @include media('<=phone') {
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  .footercopyright {
+    text-align: center;
+    margin: 8rem auto 0;
+    font-weight: 300;
+
+    @include media('<=phone') {
+      margin: 5rem auto 0;
+      text-align: left;
+    }
+  }
+
+  @include media('<=tablet') {
+    padding: 3rem 0;
+  }
+}

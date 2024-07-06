@@ -1,5 +1,16 @@
 @import 'utils/breakpoints';
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include media('<=tablet') {
+    padding: 0 14px;
+  }
+}
+
 .purchase {
   width: 100%;
   display: flex;
