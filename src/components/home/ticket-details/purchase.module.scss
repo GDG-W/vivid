@@ -54,6 +54,7 @@
         // border: 2px solid black;
 
         @include media('<=tablet') {
+          width: 100%;
           display: block;
         }
 
