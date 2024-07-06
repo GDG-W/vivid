@@ -3,7 +3,13 @@ import { ButtonProps } from './models';
 import styles from './button.module.scss';
 import { classNames } from '@/utils/classNames';
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', text, icon, outlined }) => {
+const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  text,
+  icon,
+  outlined,
+  ...others
+}) => {
   const classes = classNames(
     styles.cta,
     variant == 'primary' && styles.primary,
@@ -13,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({ variant = 'primary', text, icon, outlin
   );
 
   return (
-    <button className={classes}>
+    <button className={`${classes} ${others.className}`}>
       {text}
       {icon}
     </button>
