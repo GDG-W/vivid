@@ -1,0 +1,141 @@
+@import 'utils/breakpoints';
+@import 'utils/mixins';
+
+.landing {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--black);
+  background-color: var(--cream);
+  background-image: url('/hero-bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include media('<=phone') {
+    min-height: none;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem 0px;
+
+    .headernav {
+      width: 100%;
+      @include flex-centered;
+    }
+
+    .herocontent {
+      @include flex-centered;
+      flex-direction: column;
+      padding-block: 7rem 2rem;
+      // padding-inline: 1.25rem;
+      text-align: center;
+      // border: 2px solid black;
+
+      @include media('<=tablet') {
+        padding-block: 2.5rem 0rem;
+      }
+
+      p {
+        font-family: var(--generalSans);
+        font-size: 1.375rem;
+        margin-bottom: 1rem;
+
+        @include media('<=tablet') {
+          font-size: 1rem;
+          margin-bottom: none;
+        }
+      }
+
+      h1 {
+        font-size: 3.875rem;
+        font-size: 700;
+        margin-bottom: 1rem;
+
+        @include media('<=tablet') {
+          font-size: 2.5rem;
+          padding-inline: 3.5rem;
+        }
+      }
+    }
+
+    button {
+      @include media('<=625px') {
+        width: 100%;
+      }
+    }
+
+    .ticketWrapper {
+      position: relative;
+      height: 500px;
+      // border: 2px solid black;
+
+      // @include media('<=450px') {
+      //   // height: 200px !important;
+      // }
+
+      // @include media('<=tablet') {
+      //   height: 400px;
+      // }
+
+      .ticket {
+        position: relative;
+        width: 58%;
+        height: 100%;
+        aspect-ratio: 939.5/444.17;
+
+        @include media('<=625px') {
+          width: 80% !important;
+        }
+      }
+
+      .one {
+        position: absolute;
+        bottom: -50%;
+        right: 51%;
+        transform: rotate(63.67deg);
+        // border: 2px solid black;
+
+        @include media('<=625px') {
+          bottom: -50%;
+          right: 50%;
+        }
+      }
+
+      .two {
+        position: absolute;
+        bottom: -45%;
+        left: 51%;
+        transform: rotate(120deg);
+
+        @include media('<=625px') {
+          bottom: -50%;
+          left: 50%;
+        }
+      }
+
+      .middle {
+        position: absolute;
+        bottom: -25%;
+        left: 20%;
+        transform: rotate(90deg);
+        z-index: 10;
+
+        @include media('<=625px') {
+          bottom: -30%;
+          left: 10%;
+        }
+
+        @include media('<=phone') {
+          bottom: -5% !important;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-// import YellowTicket from '../../../../public/yelloww.svg'
 import styles from './purchase.module.scss';
 import { classNames } from '@/utils/classNames';
 import Image from 'next/image';
@@ -18,7 +17,6 @@ const PurchaseYourTicket = () => {
 
         <div className={styles.ticketdetails}>
           <div className={styles.ticketImage}>
-            {/* <YellowTicket /> */}
             <Image src='/yelloww.svg' alt='An image of the one-day ticket' fill />
           </div>
           <div>

@@ -1,0 +1,38 @@
+
+    .ticketWrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transform: rotate(90deg);
+      
+      .tickets {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        aspect-ratio: 939.5/444.17;
+        // transform: rotate(90deg);
+        
+        // border: 2px solid black;
+  
+        @include media('<=tablet') {
+          width: 100%;
+          display: block;
+        }
+  
+      }
+
+      .one {
+        position: absolute;
+        top: 700px;
+        left: 387px;
+        // transform: rotate(-63.7deg);
+      }
+
+      .two {
+        // position: absolute;
+        top: 700px;
+        left: 1276.33px;
+        // transform: rotate(-120deg);
+      }
+    }
