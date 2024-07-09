@@ -15,12 +15,14 @@ const PurchaseYourTicket = () => {
           <p>Purchase tickets for one or two-day access; for yourself, or your group of friends.</p>
         </div>
 
-        <div className={styles.ticketdetails}>
+        <div className={styles.ticketcontent}>
           <div className={styles.ticketImage}>
-            <Image src='/yelloww.svg' alt='An image of the one-day ticket' fill />
+            <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
           </div>
-          <div>
-            <h2>1 day access only | N20,000</h2>
+          <div className={styles.ticketdetails}>
+            <h2>
+              1 day access only | <span> N20,000</span>
+            </h2>
             <ul>
               <li>Attend event for just a day of your choice </li>
               <li>Meal Tickets</li>
