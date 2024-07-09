@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import styles from './landing.module.scss';
@@ -10,7 +12,7 @@ const Landing = () => {
     <div className={styles.landing}>
       <div className={styles.container}>
         <div className={styles.headernav}>
-          <Header navContent={<p>Upgrade Tickets</p>} />
+          <Header handleClick={() => {}} navContent={<span>Upgrade Tickets</span>} />
         </div>
 
         <div className={styles.herocontent}>
@@ -21,10 +23,10 @@ const Landing = () => {
 
         <div className={styles.ticketWrapper}>
           <div className={classNames(styles.ticket, styles.one)}>
-            <Image src='/yelloww.svg' alt='An image of the one-day ticket' fill />
+            <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
           </div>
           <div className={classNames(styles.ticket, styles.middle)}>
-            <Image src='/big-red-ticket.svg' alt='An image of the one-day ticket' fill />
+            <Image src='/red-ticket.svg' alt='An image of the one-day ticket' fill />
           </div>
           <div className={classNames(styles.ticket, styles.two)}>
             <Image src='/big-green-ticket.svg' alt='An image of the one-day ticket' fill />

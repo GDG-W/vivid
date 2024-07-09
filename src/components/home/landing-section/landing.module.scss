@@ -9,7 +9,7 @@
   overflow: hidden;
   color: var(--black);
   background-color: var(--cream);
-  background-image: url('/hero-bg.svg');
+  background-image: url('/backgrounds/hero-bg.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -85,13 +85,22 @@
       // }
 
       .ticket {
-        position: relative;
-        width: 58%;
+        // position: relative;
+        width: 60%;
         height: 100%;
         aspect-ratio: 939.5/444.17;
 
         @include media('<=625px') {
           width: 80% !important;
+        }
+
+        img {
+          // border: 2px solid black !important;
+          // box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+
+          > * {
+            border: 2px solid black !important;
+          }
         }
       }
 
