@@ -25,6 +25,10 @@
     margin: 0 auto;
     padding: 4rem 1rem 0px;
 
+    @include media('<=tablet') {
+      padding: 2.5rem 1.5rem;
+    }
+
     .headernav {
       width: 100%;
       @include flex-centered;
@@ -72,25 +76,13 @@
     }
 
     .ticketWrapper {
-      // position: absolute;
       bottom: 0 !important;
       height: 500px;
-      // border: 2px solid black;
-
-      // @include media('<=450px') {
-      //   // height: 200px !important;
-      // }
-
-      // @include media('<=tablet') {
-      //   height: 400px;
-      // }
 
       .ticket {
-        // position: relative;
         width: 60%;
         height: 100%;
         aspect-ratio: 939.5/444.17;
-        // border: 2px solid black !important;
 
         @include media('<=625px') {
           width: 80% !important;
@@ -99,8 +91,8 @@
 
       .one {
         position: absolute;
-        bottom: -51%; // -27vh
-        right: 47%;
+        bottom: -51%;
+        right: 49%;
         transform: rotate(63.67deg);
         // border: 2px solid black;
 
@@ -112,8 +104,8 @@
 
       .two {
         position: absolute;
-        bottom: -45%;
-        left: 51%;
+        bottom: -51%;
+        left: 49%;
         transform: rotate(120deg);
 
         @include media('<=625px') {
@@ -124,19 +116,19 @@
 
       .middle {
         position: absolute;
-        bottom: -45%;
-        left: 20%;
+        bottom: -38%;
+        left: 19%;
         transform: rotate(90deg);
         z-index: 10;
 
         @include media('<=625px') {
-          bottom: -30%;
+          // bottom: -30%;
           left: 10%;
         }
 
-        @include media('<=phone') {
-          bottom: -5% !important;
-        }
+        // @include media('<=phone') {
+        //   bottom: -5% !important;
+        // }
       }
     }
   }
