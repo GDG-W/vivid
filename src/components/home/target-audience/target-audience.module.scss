@@ -1,16 +1,5 @@
 @import 'utils/breakpoints';
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @include media('<=tablet') {
-    padding: 0 14px;
-  }
-}
-
 .targetAudience {
   width: 100%;
   display: flex;
@@ -29,12 +18,13 @@
   }
 
   .container {
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5.6rem 1.5rem;
-    min-height: 100vh;
+    padding: 8rem 1.5rem;
+    // min-height: 100vh;
 
     .innerContainer {
       display: flex;
@@ -55,6 +45,7 @@
 
         @include media('<=tablet') {
           width: 100%;
+          gap: 1em;
           align-items: start;
         }
 
@@ -77,30 +68,13 @@
         .content {
           text-align: right;
           color: var(--gray-100);
-          font-family: 'Geist', sans-serif;
+          font-family: var(--generalSans);
           font-size: 1rem;
           font-weight: 400;
           line-height: 24px;
 
           @include media('<=tablet') {
             text-align: left;
-          }
-        }
-
-        .button {
-          color: var(--gray-100);
-          font-family: 'Geist', sans-serif;
-          font-size: 1rem;
-          font-weight: 600;
-          line-height: 18px;
-          width: fit-content;
-          min-width: 230px;
-          padding: 1rem 0.5rem;
-
-          @include media('<=tablet') {
-            width: 100%;
-            background: var(--black);
-            color: var(--white);
           }
         }
       }
@@ -116,7 +90,7 @@
 
         p {
           color: var(--gray-90);
-          font-family: 'Geist', sans-serif;
+          font-family: var(--generalSans);
           font-size: 1.375rem;
           font-weight: 400;
           line-height: 32px;

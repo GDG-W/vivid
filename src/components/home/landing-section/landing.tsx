@@ -23,13 +23,28 @@ const Landing = () => {
 
         <div className={styles.ticketWrapper}>
           <div className={classNames(styles.ticket, styles.one)}>
-            <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
+            <Image
+              src='/yellow-ticket.svg'
+              alt='An image of the one-day ticket'
+              fill
+              priority={true}
+            />
           </div>
           <div className={classNames(styles.ticket, styles.middle)}>
-            <Image src='/blue-ticket.svg' alt='An image of the one-day ticket' fill />
+            <Image
+              src='/blue-ticket.svg'
+              alt='An image of the one-day ticket'
+              fill
+              priority={true}
+            />
           </div>
           <div className={classNames(styles.ticket, styles.two)}>
-            <Image src='/big-green-ticket.svg' alt='An image of the one-day ticket' fill />
+            <Image
+              src='/green-ticket.svg'
+              alt='An image of the one-day ticket'
+              fill
+              priority={true}
+            />
           </div>
         </div>
       </div>
