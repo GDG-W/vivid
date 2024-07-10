@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
     variant == 'secondary' && styles.secondary,
     variant == 'transparent' && styles.transparent,
     outlined && styles.outlined,
-    others.className
+    others.className,
   );
 
   return (
