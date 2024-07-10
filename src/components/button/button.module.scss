@@ -13,6 +13,10 @@
   font-weight: 600;
   max-width: 100%;
   padding: 1.5rem;
+
+  @include media('<=tablet') {
+    width: 100%;
+  }
 }
 
 .primary {

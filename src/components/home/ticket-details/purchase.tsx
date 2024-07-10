@@ -16,8 +16,11 @@ const PurchaseYourTicket = () => {
         </div>
 
         <div className={styles.ticketcontent}>
-          <div className={styles.ticketImage}>
-            <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
+          <div className={styles.imagewrapper}>
+            <div className={styles.ticketimage}>
+              <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
+            </div>
+            {/* <div>hello</div> */}
           </div>
           <div className={styles.ticketdetails}>
             <h2>
