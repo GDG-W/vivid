@@ -26,7 +26,7 @@ const Landing = () => {
             <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
           </div>
           <div className={classNames(styles.ticket, styles.middle)}>
-            <Image src='/red-ticket.svg' alt='An image of the one-day ticket' fill />
+            <Image src='/blue-ticket.svg' alt='An image of the one-day ticket' fill />
           </div>
           <div className={classNames(styles.ticket, styles.two)}>
             <Image src='/big-green-ticket.svg' alt='An image of the one-day ticket' fill />
