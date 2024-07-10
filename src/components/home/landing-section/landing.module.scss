@@ -72,7 +72,8 @@
     }
 
     .ticketWrapper {
-      position: relative;
+      // position: absolute;
+      bottom: 0 !important;
       height: 500px;
       // border: 2px solid black;
 
@@ -89,32 +90,24 @@
         width: 60%;
         height: 100%;
         aspect-ratio: 939.5/444.17;
+        // border: 2px solid black !important;
 
         @include media('<=625px') {
           width: 80% !important;
-        }
-
-        img {
-          // border: 2px solid black !important;
-          // box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
-
-          > * {
-            border: 2px solid black !important;
-          }
         }
       }
 
       .one {
         position: absolute;
-        bottom: -50%;
-        right: 51%;
+        bottom: -51%; // -27vh
+        right: 47%;
         transform: rotate(63.67deg);
         // border: 2px solid black;
 
-        @include media('<=625px') {
-          bottom: -50%;
-          right: 50%;
-        }
+        // @include media('<=625px') {
+        //   bottom: -5vh;
+        //   right: 50vh;
+        // }
       }
 
       .two {
@@ -131,7 +124,7 @@
 
       .middle {
         position: absolute;
-        bottom: -25%;
+        bottom: -45%;
         left: 20%;
         transform: rotate(90deg);
         z-index: 10;
