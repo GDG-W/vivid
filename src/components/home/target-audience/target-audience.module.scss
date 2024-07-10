@@ -1,0 +1,190 @@
+@import 'utils/breakpoints';
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include media('<=tablet') {
+    padding: 0 14px;
+  }
+}
+
+.targetAudience {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--generalSans);
+  background-image: url('../../../../public/devfest-target-audience-bg.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include media('<=tablet') {
+    background-image: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5.6rem 1.5rem;
+    min-height: 100vh;
+
+    .innerContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4em;
+
+      @include media('<=tablet') {
+        flex-direction: column-reverse;
+      }
+
+      .contentContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2em;
+        width: 45%;
+
+        @include media('<=tablet') {
+          width: 100%;
+          align-items: start;
+        }
+
+        .heading {
+          text-align: right;
+          color: var(--gray-90);
+          font-family: 'Geist', sans-serif;
+          font-size: 5rem;
+          font-weight: 700;
+          line-height: 92px;
+
+          @include media('<=tablet') {
+            font-size: 1.375rem;
+            line-height: 32px;
+            font-weight: 600;
+            text-align: left;
+          }
+        }
+
+        .content {
+          text-align: right;
+          color: var(--gray-100);
+          font-family: 'Geist', sans-serif;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 24px;
+
+          @include media('<=tablet') {
+            text-align: left;
+          }
+        }
+
+        .button {
+          color: var(--gray-100);
+          font-family: 'Geist', sans-serif;
+          font-size: 1rem;
+          font-weight: 600;
+          line-height: 18px;
+          width: fit-content;
+          min-width: 230px;
+          padding: 1rem 0.5rem;
+
+          @include media('<=tablet') {
+            width: 100%;
+            background: var(--black);
+            color: var(--white);
+          }
+        }
+      }
+
+      .audienceContainer {
+        display: flex;
+        flex-direction: column;
+        width: 55%;
+
+        @include media('<=tablet') {
+          width: 100%;
+        }
+
+        p {
+          color: var(--gray-90);
+          font-family: 'Geist', sans-serif;
+          font-size: 1.375rem;
+          font-weight: 400;
+          line-height: 32px;
+          margin-bottom: 24px;
+
+          @include media('<=tablet') {
+            font-size: 1.125rem;
+            line-height: 24px;
+          }
+        }
+
+        ul {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 0;
+        }
+
+        li {
+          color: var(--gray-90);
+          font-family: 'Geist', sans-serif;
+          font-size: 3.875rem;
+          font-weight: 700;
+          line-height: 76px;
+          white-space: nowrap;
+
+          @include media('<=tablet') {
+            font-size: 2.5rem;
+            line-height: 48px;
+            font-weight: 600;
+          }
+        }
+
+        li:nth-child(1) {
+          opacity: 0.1;
+        }
+
+        li:nth-child(2) {
+          opacity: 1;
+        }
+
+        li:nth-child(3) {
+          opacity: 0.8;
+        }
+
+        li:nth-child(4) {
+          opacity: 0.6;
+        }
+
+        li:nth-child(5) {
+          opacity: 0.4;
+        }
+
+        li:nth-child(6) {
+          opacity: 0.2;
+        }
+
+        li:nth-child(7) {
+          opacity: 0.1;
+        }
+      }
+    }
+
+    .ticketdetails {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
