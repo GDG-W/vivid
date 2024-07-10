@@ -10,20 +10,22 @@ const PurchaseYourTicket = () => {
   return (
     <section className={styles.purchase}>
       <div className={classNames(styles.container)}>
-        <h1>Purchase Your Tickets</h1>
-        <p>Purchase Tickets for yourself, or your group of friends</p>
+        <div className={styles.heading}>
+          <h1>Purchase your tickets</h1>
+          <p>Purchase tickets for one or two-day access; for yourself, or your group of friends.</p>
+        </div>
 
-        <div className={styles.ticketdetails}>
-          <Image
-            src='/big-yellow-ticket.svg'
-            width={650}
-            height={350}
-            alt='An image of the one-day ticket'
-            quality={100}
-          />
-
-          <div>
-            <h2>1 day access only | N20,000</h2>
+        <div className={styles.ticketcontent}>
+          <div className={styles.imagewrapper}>
+            <div className={styles.ticketimage}>
+              <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
+            </div>
+            {/* <div>hello</div> */}
+          </div>
+          <div className={styles.ticketdetails}>
+            <h2>
+              1 day access only | <span> N20,000</span>
+            </h2>
             <ul>
               <li>Attend event for just a day of your choice </li>
               <li>Meal Tickets</li>

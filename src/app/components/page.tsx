@@ -11,9 +11,10 @@ const TestPage = () => {
     <div className='main'>
       <div className='test'>
         <Header
+          handleClick={() => {}}
           navContent={
             <>
-              <p>Get tickets for Your Friends</p>
+              <button onClick={() => {}}>Get tickets for Your Friends</button>
               <ArrowRight />
             </>
           }
