@@ -78,7 +78,7 @@
     }
 
     .ticketWrapper {
-      bottom: 0 !important;
+      bottom: 0;
       height: 300px;
 
       .ticket {
@@ -118,13 +118,8 @@
         z-index: 10;
 
         @include media('<=625px') {
-          // bottom: -30%;
           left: 10%;
         }
-
-        // @include media('<=phone') {
-        //   bottom: -5% !important;
-        // }
       }
     }
   }
