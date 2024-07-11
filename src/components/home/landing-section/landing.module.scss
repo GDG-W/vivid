@@ -37,6 +37,34 @@
       @include flex-centered;
     }
 
+    .uppercursors {
+      svg:nth-child(1) {
+        position: absolute;
+        top: 23%;
+        left: 10%;
+      }
+
+      svg:nth-child(2) {
+        position: absolute;
+        top: 21%;
+        right: 8%;
+      }
+    }
+
+    .lowercursors {
+      svg:nth-child(1) {
+        position: absolute;
+        bottom: 42%;
+        left: 10%;
+      }
+
+      svg:nth-child(2) {
+        position: absolute;
+        bottom: 40%;
+        right: 8%;
+      }
+    }
+
     .herocontent {
       @include flex-centered;
       flex-direction: column;
@@ -66,7 +94,6 @@
 
         @include media('<=tablet') {
           font-size: 2.5rem;
-          // padding-inline: 3.5rem;
         }
       }
     }
