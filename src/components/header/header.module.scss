@@ -22,13 +22,13 @@
     gap: 2px;
 
     button {
+      cursor: pointer;
       border: inherit;
       background-color: transparent;
       color: inherit;
       font-size: 1rem;
       font-weight: 500;
       font-family: var(--generalSans);
-      cursor: pointer;
 
       @include media('<tablet') {
         font-size: 0.75rem;

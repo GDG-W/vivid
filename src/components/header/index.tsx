@@ -11,7 +11,13 @@ const Header: React.FC<HeaderProps> = ({ navContent, className, handleClick }) =
   return (
     <header className={classNames(styles.header, className)}>
       <span>
-        <Image src='/icons/devfest-logo.svg' alt='DevFest Lagos logo' width={118} height={34} />
+        <Image
+          src='/icons/devfest-logo.svg'
+          alt='DevFest Lagos logo'
+          width={118}
+          height={34}
+          priority={true}
+        />
       </span>
       <nav>
         <button type='button' onClick={handleClick}>
