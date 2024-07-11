@@ -13,6 +13,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({ image, isActive }) => {
         className={styles.carouselItemImage}
         src={image}
         alt='Carousel Image'
+        // fill
         width={400}
         height={400}
       />
