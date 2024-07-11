@@ -21,7 +21,7 @@
     padding: 5.6rem 1.5rem;
 
     @include media('<=tablet') {
-      padding: 3.75rem 1.5rem;
+      padding: 3.75rem 1rem;
     }
 
     .heading {
@@ -100,7 +100,7 @@
 
           span {
             font-size: 1.125rem;
-            font-weight: 400;
+            font-weight: 600;
           }
         }
 
@@ -111,10 +111,6 @@
           @include media('<=tablet') {
             font-size: 1rem;
             padding-left: 0px;
-          }
-
-          li {
-            padding-left: 0.8rem;
           }
         }
 

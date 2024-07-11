@@ -23,6 +23,9 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 4rem 1rem 0px;
 
     @include media('<=tablet') {
@@ -34,15 +37,42 @@
       @include flex-centered;
     }
 
+    .uppercursors {
+      svg:nth-child(1) {
+        position: absolute;
+        top: 23%;
+        left: 10%;
+      }
+
+      svg:nth-child(2) {
+        position: absolute;
+        top: 21%;
+        right: 8%;
+      }
+    }
+
+    .lowercursors {
+      svg:nth-child(1) {
+        position: absolute;
+        bottom: 42%;
+        left: 10%;
+      }
+
+      svg:nth-child(2) {
+        position: absolute;
+        bottom: 40%;
+        right: 8%;
+      }
+    }
+
     .herocontent {
       @include flex-centered;
       flex-direction: column;
-      padding-block: 7rem 2rem;
-      // padding-inline: 1.25rem;
+      margin-bottom: 6rem;
       text-align: center;
-      // border: 2px solid black;
 
       @include media('<=tablet') {
+        margin-bottom: 0rem;
         padding-block: 2.5rem 0rem;
       }
 
@@ -64,7 +94,6 @@
 
         @include media('<=tablet') {
           font-size: 2.5rem;
-          padding-inline: 3.5rem;
         }
       }
     }
@@ -76,8 +105,8 @@
     }
 
     .ticketWrapper {
-      bottom: 0 !important;
-      height: 500px;
+      bottom: 0;
+      height: 300px;
 
       .ticket {
         width: 60%;
@@ -94,12 +123,6 @@
         bottom: -51%;
         right: 49%;
         transform: rotate(63.67deg);
-        // border: 2px solid black;
-
-        // @include media('<=625px') {
-        //   bottom: -5vh;
-        //   right: 50vh;
-        // }
       }
 
       .two {
@@ -122,13 +145,8 @@
         z-index: 10;
 
         @include media('<=625px') {
-          // bottom: -30%;
           left: 10%;
         }
-
-        // @include media('<=phone') {
-        //   bottom: -5% !important;
-        // }
       }
     }
   }

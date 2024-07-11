@@ -8,7 +8,7 @@ import '../styles/index.scss';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'DevFest BoilerPlate',
+  title: "DevFest Lagos'24 | Tickets",
   description: 'A simple project to help you boostrap DevFest websites',
   keywords: 'devfest, devfest lagos, coming soon, date, venue',
   metadataBase: new URL('https://devfest-boilerplate.vercel.app/'), // synonymous to the base URL
