@@ -68,6 +68,9 @@
       opacity: 1;
       cursor: pointer;
       border-radius: 12px;
+      -webkit-tap-highlight-color: transparent;
+      -moz-tap-highlight-color: transparent;
+      // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
       img {
         width: 400px;
