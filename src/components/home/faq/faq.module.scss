@@ -8,7 +8,6 @@
   align-items: center;
   background-color: var(--pastel-green);
   color: var(--black);
-  font-family: var(--generalSans);
 
   .container {
     width: 100%;
@@ -20,6 +19,7 @@
       font-size: 1.125rem;
       margin-bottom: 0.25rem;
       align-self: flex-start;
+      font-family: var(--generalSans);
 
       @include media('<=tablet') {
         font-size: 1rem;
@@ -29,9 +29,8 @@
     .heading1 {
       align-self: flex-start;
       color: var(--gray-90);
-      font-family: 'Geist', sans-serif;
       font-size: 3.5rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 70px;
 
       @include media('<=tablet') {
@@ -43,9 +42,8 @@
     .heading2 {
       align-self: flex-start;
       color: var(--gray-60);
-      font-family: 'Geist', sans-serif;
       font-size: 3.5rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 70px;
       margin-bottom: 1.5rem;
 
@@ -114,7 +112,6 @@
 
       .tabheading {
         color: var(--gray-90);
-        font-family: 'Geist', sans-serif;
         font-size: 1.75rem;
         font-weight: 500;
         margin-top: 2rem;

@@ -8,7 +8,6 @@
   align-items: center;
   background-color: var(--pastel-yellow);
   color: var(--black);
-  font-family: var(--generalSans);
 
   @include media('<=tablet') {
     height: 100%;
@@ -33,9 +32,8 @@
       }
 
       h1 {
-        font-family: 'Geist', sans-serif;
         font-size: 3.5rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 0.5rem;
         color: var(--gray-90);
 
@@ -47,6 +45,8 @@
 
       p {
         font-size: 1.125rem;
+        font-family: var(--generalSans);
+
         @include media('<=tablet') {
           font-size: 1rem;
         }
@@ -57,6 +57,7 @@
       display: flex;
       gap: 1rem;
       align-items: center;
+      font-family: var(--generalSans);
 
       @include media('<=tablet') {
         display: block;

@@ -4,7 +4,6 @@
   width: 100%;
   background-color: var(--white);
   color: var(--black);
-  font-family: var(--generalSans);
   background-image: url('../../../../public/devfest-target-audience-bg.png');
   background-position: center;
   background-size: cover;
@@ -37,6 +36,7 @@
 
     .paragraph {
       color: var(--gray-100);
+      font-family: var(--generalSans);
       font-size: 1.125rem;
       font-weight: 400;
       line-height: 24px;
@@ -50,12 +50,11 @@
 
   #carousel {
     position: relative;
-    height: 600px;
+    height: 700px;
     top: 50%;
-    // transform: translateY(-50%);
     overflow: hidden;
 
-    div {
+    & > div {
       position: absolute;
       transition:
         transform 1s,
@@ -65,11 +64,17 @@
       opacity: 1;
       cursor: pointer;
       border-radius: 12px;
+      // border: 2px solid black;
 
       img {
         width: 400px;
         transition: width 1s;
         border-radius: 12px;
+        filter: grayscale(100%);
+      }
+
+      .details {
+        display: none;
       }
 
       &.hideLeft {
@@ -114,9 +119,33 @@
       }
 
       &.selected {
+        height: 700px;
         z-index: 10;
         left: 50%;
         transform: translateY(0px) translateX(-50%);
+
+        img {
+          filter: none;
+        }
+
+        .details {
+          display: block;
+          width: 400px;
+          margin-top: 1.5rem;
+
+          h2 {
+            font-family: var(--generalSans);
+            font-weight: 600;
+            font-size: 1.375rem;
+            line-height: 32px;
+          }
+
+          p {
+            font-family: var(--generalSans);
+            line-height: 24px;
+            margin-top: 1rem;
+          }
+        }
       }
 
       &.next {
