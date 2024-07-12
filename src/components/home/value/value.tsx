@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styles from './value.module.scss';
 
@@ -56,6 +56,7 @@ const Value = () => {
         'Enjoy complimentary meals all provided at no cost, ensuring you stay energized and focused during the event.',
     },
   ];
+
   const [active, setActive] = useState(4);
   const moveToSelected = (element: 'next' | 'prev' | number) => {
     let newIndex: number;
@@ -86,6 +87,14 @@ const Value = () => {
       return styles.hideRight;
     }
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      moveToSelected('next');
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [active]);
 
   return (
     <section className={styles.values}>
