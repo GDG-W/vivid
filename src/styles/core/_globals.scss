@@ -1,7 +1,6 @@
 :root {
   --max-width: 1200px;
 
-  --font-geist-sans: var(--geist-sans);
   // COLORS
   --cream: #fffaeb;
   --pastel-green: #ccf6c5;
@@ -15,14 +14,8 @@
   --gray-80: #333333;
   --gray-90: #1c1c1c;
   --gray-100: #1e1e1e;
-
-  --dv-blue: #c3ecf6;
+  --pastel-blue: #c3ecf6;
 }
-
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//   }
-// }
 
 * {
   box-sizing: border-box;
@@ -48,15 +41,6 @@ body {
   background: white;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  // font-family: var(--geist-sans);
-}
-
 ul {
   list-style-position: inside;
 }
@@ -69,10 +53,4 @@ a {
 button,
 a {
   cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
