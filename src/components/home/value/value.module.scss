@@ -54,6 +54,10 @@
     top: 50%;
     overflow: hidden;
 
+    @include media('<=500px') {
+      height: 600px;
+    }
+
     & > div {
       position: absolute;
       transition:
@@ -70,6 +74,10 @@
         transition: width 1s;
         border-radius: 12px;
         filter: grayscale(100%);
+
+        @include media('<=500px') {
+          width: 300px;
+        }
       }
 
       .details {
@@ -83,6 +91,10 @@
 
         img {
           width: 200px;
+
+          @include media('<=500px') {
+            width: 100px;
+          }
         }
       }
 
@@ -93,6 +105,9 @@
 
         img {
           width: 200px;
+          @include media('<=500px') {
+            width: 100px;
+          }
         }
       }
 
@@ -103,6 +118,9 @@
 
         img {
           width: 300px;
+          @include media('<=500px') {
+            width: 200px;
+          }
         }
       }
 
@@ -114,6 +132,9 @@
 
         img {
           width: 200px;
+          @include media('<=500px') {
+            width: 100px;
+          }
         }
       }
 
@@ -131,6 +152,10 @@
           display: block;
           width: 400px;
           margin-top: 1.5rem;
+
+          @include media('<=500px') {
+            width: 300px;
+          }
 
           h2 {
             font-family: var(--generalSans);
@@ -154,6 +179,9 @@
 
         img {
           width: 300px;
+          @include media('<=500px') {
+            width: 200px;
+          }
         }
       }
 
@@ -165,6 +193,10 @@
 
         img {
           width: 200px;
+
+          @include media('<=500px') {
+            width: 100px;
+          }
         }
       }
     }
