@@ -98,12 +98,6 @@
       }
     }
 
-    button {
-      @include media('<=625px') {
-        width: 100%;
-      }
-    }
-
     .ticketWrapper {
       bottom: 0;
       height: 300px;

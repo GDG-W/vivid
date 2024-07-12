@@ -7,7 +7,6 @@
   align-items: center;
   background-color: var(--white);
   color: var(--black);
-  font-family: var(--generalSans);
   background-image: url('../../../../public/devfest-target-audience-bg.png');
   background-position: center;
   background-size: cover;
@@ -24,7 +23,6 @@
     justify-content: center;
     align-items: center;
     padding: 8rem 1.5rem;
-    // min-height: 100vh;
 
     .innerContainer {
       display: flex;
@@ -52,7 +50,6 @@
         .heading {
           text-align: right;
           color: var(--gray-90);
-          font-family: 'Geist', sans-serif;
           font-size: 5rem;
           font-weight: 700;
           line-height: 92px;
@@ -112,17 +109,9 @@
 
         li {
           color: var(--gray-90);
-          font-family: 'Geist', sans-serif;
-          font-size: 3.875rem;
+          font-size: clamp(2rem, 5.5vw, 3.875rem);
           font-weight: 700;
-          line-height: 76px;
           white-space: nowrap;
-
-          @include media('<=tablet') {
-            font-size: 2.5rem;
-            line-height: 48px;
-            font-weight: 600;
-          }
         }
 
         li:nth-child(1) {
