@@ -29,6 +29,21 @@
       font-size: 1rem;
       font-weight: 500;
       font-family: var(--generalSans);
+      background-color: #f4f4f4;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      height: 35px;
+      overflow: hidden;
+      animation: scaleButton 1000ms cubic-bezier(0.43, 0, 0, 1) 167ms forwards;
+
+      @keyframes scaleButton {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
 
       @include media('<tablet') {
         font-size: 0.75rem;

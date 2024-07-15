@@ -15,7 +15,10 @@ const Landing = () => {
     <div className={styles.landing}>
       <div className={styles.container}>
         <div className={styles.headernav}>
-          <Header handleClick={() => {}} navContent={<span>Upgrade Tickets</span>} />
+          <Header
+            handleClick={() => {}}
+            navContent={<span className={styles.upgradeTicketText}>Upgrade Tickets</span>}
+          />
         </div>
 
         <div className={styles.uppercursors}>
