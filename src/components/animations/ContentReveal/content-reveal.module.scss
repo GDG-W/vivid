@@ -1,0 +1,32 @@
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.revealLeft {
+  transform: translateX(-100vw);
+  animation: slideInFromLeft 1s cubic-bezier(0.1, 0, 0.1, 1) 417ms forwards;
+}
+
+.revealRight {
+  transform: translateX(100vw);
+  animation: slideInFromRight 1s cubic-bezier(0.1, 0, 0.1, 1) 417ms forwards;
+}

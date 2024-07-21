@@ -55,13 +55,24 @@
     }
 
     .uppercursors {
-      svg:nth-child(1) {
+      // svg:nth-child(1) {
+      //   position: absolute;
+      //   top: 23%;
+      //   left: 10%;
+      // }
+
+      // svg:nth-child(2) {
+      //   position: absolute;
+      //   top: 21%;
+      //   right: 8%;
+      // }
+      > :nth-child(1) {
         position: absolute;
         top: 23%;
         left: 10%;
       }
 
-      svg:nth-child(2) {
+      > :nth-child(2) {
         position: absolute;
         top: 21%;
         right: 8%;
@@ -69,13 +80,25 @@
     }
 
     .lowercursors {
-      svg:nth-child(1) {
+      // svg:nth-child(1) {
+      //   position: absolute;
+      //   bottom: 42%;
+      //   left: 10%;
+      // }
+
+      // svg:nth-child(2) {
+      //   position: absolute;
+      //   bottom: 40%;
+      //   right: 8%;
+      // }
+
+      > :nth-child(1) {
         position: absolute;
         bottom: 42%;
         left: 10%;
       }
 
-      svg:nth-child(2) {
+      > :nth-child(2) {
         position: absolute;
         bottom: 40%;
         right: 8%;
@@ -93,24 +116,58 @@
         padding-block: 2.5rem 0rem;
       }
 
-      p {
-        font-family: var(--generalSans);
-        font-size: 1.375rem;
-        margin-bottom: 1rem;
+      .heroContentWrapper {
+        margin-bottom: 1em;
 
-        @include media('<=tablet') {
-          font-size: 1rem;
-          margin-bottom: none;
+        .heroContentParagraph {
+          font-family: var(--generalSans);
+          font-size: 1.375rem;
+          // margin-bottom: 1rem;
+
+          @include media('<=tablet') {
+            font-size: 1rem;
+            margin-bottom: none;
+          }
+        }
+
+        .heroContentHeader {
+          font-size: 3.875rem;
+          font-weight: 700;
+          // margin-bottom: 1rem;
+
+          @include media('<=tablet') {
+            font-size: 2.5rem;
+          }
         }
       }
 
-      h1 {
-        font-size: 3.875rem;
-        font-size: 700;
-        margin-bottom: 1rem;
+      .heroCtaButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+        border: inherit;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: var(--generalSans);
+        font-weight: 600;
+        max-width: 100%;
+        padding: 1.5rem 3.5rem;
+        background: var(--black);
+        color: var(--white);
 
         @include media('<=tablet') {
-          font-size: 2.5rem;
+          width: 100%;
+        }
+      }
+
+      @keyframes buttonTextAnimation {
+        0% {
+          transform: translate(var(--initial-x), var(--initial-y));
+        }
+        100% {
+          transform: translate(var(--initial-x), var(--final-y));
         }
       }
     }
@@ -131,32 +188,97 @@
 
       .one {
         position: absolute;
-        bottom: -51%;
-        right: 49%;
-        transform: rotate(63.67deg);
-      }
+        bottom: -90%;
+        right: 30%;
+        transform: rotate(90deg);
+        animation:
+          moveTicketOne 1000ms cubic-bezier(0.47, 0, 0, 1) 200ms forwards,
+          rotateTicketOne 1000ms cubic-bezier(0.41, 0, 0, 1) 650ms forwards;
 
-      .two {
-        position: absolute;
-        bottom: -51%;
-        left: 49%;
-        transform: rotate(120deg);
+        @keyframes moveTicketOne {
+          0% {
+            bottom: -90%;
+          }
+          100% {
+            bottom: -50%;
+          }
+        }
 
-        @include media('<=625px') {
-          bottom: -50%;
-          left: 50%;
+        @keyframes rotateTicketOne {
+          0% {
+            transform: rotate(90deg);
+            right: 30%;
+          }
+          100% {
+            transform: rotate(60deg);
+            right: 45%;
+          }
+        }
+
+        .ticketImage {
+          width: 85% !important;
         }
       }
 
       .middle {
         position: absolute;
-        bottom: -38%;
+        bottom: -100%;
         left: 19%;
         transform: rotate(90deg);
         z-index: 10;
 
+        animation: moveTicketMiddle 1000ms cubic-bezier(0.47, 0, 0, 1) forwards;
+
         @include media('<=625px') {
           left: 10%;
+        }
+
+        @keyframes moveTicketMiddle {
+          0% {
+            bottom: -100%;
+          }
+          100% {
+            bottom: -40%;
+          }
+        }
+
+        .ticketImage {
+          width: 95% !important;
+        }
+      }
+
+      .two {
+        position: absolute;
+        bottom: -90%;
+        left: 30%;
+        transform: rotate(90deg);
+        animation:
+          moveTicketTwo 1000ms cubic-bezier(0.47, 0, 0, 1) 200ms forwards,
+          rotateTicketTwo 1000ms cubic-bezier(0.41, 0, 0, 1) 650ms forwards;
+
+        @include media('<=625px') {
+          bottom: -50%;
+          left: 50%;
+        }
+
+        @keyframes moveTicketTwo {
+          0% {
+            bottom: -90%;
+          }
+          100% {
+            bottom: -45%;
+          }
+        }
+
+        @keyframes rotateTicketTwo {
+          0% {
+            transform: rotate(90deg);
+            left: 30%;
+          }
+          100% {
+            transform: rotate(120deg);
+            left: 45%;
+          }
         }
       }
     }

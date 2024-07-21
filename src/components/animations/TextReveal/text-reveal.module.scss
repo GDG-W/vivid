@@ -1,0 +1,23 @@
+.textContainer {
+  margin: 0;
+  overflow: hidden;
+  line-height: 1;
+
+  .animatedText {
+    display: block;
+    transform: translate(0, 100%);
+
+    &.inView {
+      animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+    }
+  }
+
+  @keyframes reveal {
+    0% {
+      transform: translate(0, 100%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+}

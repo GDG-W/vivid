@@ -9,6 +9,17 @@
   background-color: var(--white);
   border-radius: 16px;
   padding: 1.5rem;
+  opacity: 0;
+  animation: headerBackground 1000ms cubic-bezier(0.33, 0, 0.67, 1) 167ms forwards;
+
+  @keyframes headerBackground {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @include media('<tablet') {
     gap: 20px;

@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import TextRevealAnimation from '@/components/animations/TextReveal/text-reveal';
+import { classNames } from '@/utils/classNames';
+import { useEffect, useState } from 'react';
 import styles from './value.module.scss';
 
 const Value = () => {
@@ -100,8 +101,21 @@ const Value = () => {
     <section className={styles.values}>
       <div className={styles.container}>
         <div className={styles.topContent}>
-          <p className={styles.paragraph}>DevFest 2024</p>
-          <h1 className={styles.heading}>What value will you be getting?</h1>
+          <TextRevealAnimation textClassName={styles.paragraph} text='DevFest 2024' as='p' />
+          <div>
+            <TextRevealAnimation
+              textClassName={classNames(styles.animate, styles.heading)}
+              text='What value will you'
+              as='h1'
+              animationDelay={100}
+            />
+            <TextRevealAnimation
+              textClassName={classNames(styles.animate, styles.heading)}
+              text='be getting'
+              as='h1'
+              animationDelay={150}
+            />
+          </div>
         </div>
 
         <div id={styles.carousel}>
