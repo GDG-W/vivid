@@ -106,14 +106,20 @@ const Value = () => {
 
         <div id={styles.carousel}>
           {items.map((item, index) => (
-            <div key={index} className={getClassNames(index)} onClick={() => moveToSelected(index)}>
-              <img src={item.src} alt='carousel item' />
-              <div className={styles.details}>
-                <h2>{item.title}</h2>
-                <p>{item.content}</p>
+            <>
+              <div
+                key={index}
+                className={getClassNames(index)}
+                onClick={() => moveToSelected(index)}
+              >
+                <img src={item.src} alt='carousel item' />
               </div>
-            </div>
+            </>
           ))}
+        </div>
+        <div className={styles.details}>
+          <h2>{items[active].title}</h2>
+          <p>{items[active].content}</p>
         </div>
       </div>
     </section>
