@@ -9,13 +9,20 @@ import GreenCursor from '../../../../public/green-cursor.svg';
 import YellowCursor from '../../../../public/yellow-cursor.svg';
 import RedCursor from '../../../../public/red-cursor.svg';
 import BlueCursor from '../../../../public/blue-cursor.svg';
+import { Modal } from '@/components/modal';
+import PurchaseTicket from '@/components/purchase-ticket';
 
 const Landing = () => {
+  const [openTicket, setOpenTicket] = React.useState<boolean>(false);
+
   return (
     <div className={styles.landing}>
       <div className={styles.container}>
         <div className={styles.headernav}>
-          <Header handleClick={() => {}} navContent={<span>Upgrade Tickets</span>} />
+          <Header
+            handleClick={() => setOpenTicket(true)}
+            navContent={<span>Upgrade Tickets</span>}
+          />
         </div>
 
         <div className={styles.uppercursors}>
@@ -61,6 +68,11 @@ const Landing = () => {
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <Modal open={openTicket} onClose={() => setOpenTicket(false)}>
+        <PurchaseTicket />
+      </Modal>
     </div>
   );
 };
