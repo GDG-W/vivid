@@ -9,6 +9,7 @@ export type ButtonProps = {
   onClick?: () => void;
   icon?: string | ReactNode;
   outlined?: boolean;
+  disabled?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent';
   text: string;
 } & Props;

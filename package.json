@@ -12,6 +12,7 @@
     "prettierrc": "prettier --write ."
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
     "@next/third-parties": "^14.2.4",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.45.1",
@@ -21,6 +22,7 @@
     "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.52.1",
     "sass": "^1.77.6",
     "swiper": "^11.1.4"
   },

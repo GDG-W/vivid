@@ -38,3 +38,9 @@
   color: var(--black);
   border: 2px solid var(--black);
 }
+
+.disabled {
+  cursor: not-allowed;
+  color: #1e1e1e;
+  background: #e6e6e6;
+}
