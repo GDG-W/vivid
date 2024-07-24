@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import * as Yup from 'yup';
+import { Formik, Form, Field } from 'formik';
 import Header from '@/components/header';
+import ArrowRight from '../../../public/icons/arrow-right.svg';
 import InfoCircle from '../../../public/info-circle.svg';
 import Button from '@/components/button';
 import TextField from '@/components/form/TextField';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
 
 const Login = () => {
   const [formError, setFormError] = useState('');
@@ -30,7 +31,15 @@ const Login = () => {
     <div className='login'>
       <div className='backdrop'>
         <div className='container'>
-          <Header navContent='Get Tickets For Your Friends' handleClick={() => {}} />
+          <Header
+            navContent={
+              <>
+                <span>Get Tickets For Your Friends</span>
+                <ArrowRight />
+              </>
+            }
+            handleClick={() => {}}
+          />
           <div className='login__card'>
             <h1 className='login__title'>Welcome</h1>
             {formError ? (

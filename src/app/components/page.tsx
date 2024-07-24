@@ -14,7 +14,7 @@ const TestPage = () => {
           handleClick={() => {}}
           navContent={
             <>
-              <button onClick={() => {}}>Get tickets for Your Friends</button>
+              <span>Get tickets for Your Friends</span>
               <ArrowRight />
             </>
           }

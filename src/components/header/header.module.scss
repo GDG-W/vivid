@@ -11,7 +11,8 @@
   padding: 1.5rem;
 
   @include media('<tablet') {
-    gap: 20px;
+    padding: 1.5rem 1rem;
+    gap: 50px;
     width: 100%;
   }
 
@@ -22,6 +23,10 @@
     gap: 2px;
 
     button {
+      display: flex;
+      align-items: center;
+      // text-align: right;
+      gap: 2px;
       cursor: pointer;
       border: inherit;
       background-color: transparent;
