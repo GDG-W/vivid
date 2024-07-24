@@ -1,0 +1,96 @@
+@import 'utils/breakpoints';
+@import 'utils/mixins';
+
+.login {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: var(--generalSans);
+  background-color: var(--pastel-green);
+  background-image: url('/auth-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include media('<=500px') {
+    background-color: var(--white);
+    background-image: none;
+  }
+
+  .backdrop {
+    width: 100%;
+    height: 100vh;
+    padding: 4rem;
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
+    @include media('<=500px') {
+      padding: 1rem;
+    }
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    header {
+      margin: 0 auto;
+      @include media('<=500px') {
+        padding: 1.5rem 0rem;
+      }
+    }
+
+    .login__card {
+      max-width: 500px;
+      padding: 2.5rem 2.25rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      margin: 7rem auto;
+
+      @include media('<=500px') {
+        padding: 0px;
+        margin: 0 auto;
+      }
+
+      .login__title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 0.5rem;
+
+        @include media('<=500px') {
+          text-align: left;
+        }
+      }
+
+      .login__subtitle {
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+        @include media('<=500px') {
+          text-align: left;
+          font-weight: 400;
+        }
+      }
+
+      .error {
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--secondary-red);
+      }
+
+      button {
+        width: 100%;
+        margin-top: 2.25rem;
+      }
+    }
+  }
+}
