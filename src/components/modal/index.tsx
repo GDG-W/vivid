@@ -9,7 +9,6 @@ export const Modal: React.FC<IModalProps> = ({ open, onClose, children, width })
   return (
     <div className={styles.modal_overlay} onClick={onClose}>
       <div className={`${styles.modal_container} ${m_width}`} onClick={(e) => e.stopPropagation()}>
-        {/* <button className="modal_close_button" onClick={onClose}>X</button> */}
         <div className={styles.modal_content}>{children}</div>
       </div>
     </div>
