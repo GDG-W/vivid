@@ -7,7 +7,7 @@ import Header from '@/components/header';
 import ArrowRight from '../../../public/icons/arrow-right.svg';
 import InfoCircle from '../../../public/info-circle.svg';
 import Button from '@/components/button';
-import TextField from '@/components/form/TextField';
+import TextField from '@/components/form/textfield/TextField';
 
 const Login = () => {
   const [formError, setFormError] = useState('');
