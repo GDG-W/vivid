@@ -11,3 +11,7 @@
 
 @import 'utils/breakpoints';
 @import 'utils/mixins';
+
+.dissapear {
+  opacity: 0;
+}
