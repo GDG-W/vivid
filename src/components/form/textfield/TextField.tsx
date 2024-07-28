@@ -19,12 +19,15 @@ const TextField = ({
         <span>{extraLabel}</span>
       </label>
       <input {...inputProps} type={type} id={id} placeholder={placeholder} />
-      <div className={styles.extra}>
-        <div className={styles.left}>{bottomLeft}</div>
-        <a className={styles.right} href=''>
-          {bottomRight}
-        </a>
-      </div>
+      {bottomLeft ||
+        (bottomRight && (
+          <div className={styles.extra}>
+            <div className={styles.left}>{bottomLeft}</div>
+            <a className={styles.right} href=''>
+              {bottomRight}
+            </a>
+          </div>
+        ))}
     </div>
   );
 };

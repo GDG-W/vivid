@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-// import Image from 'next/image';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import * as Yup from 'yup';
 import Header from '@/components/header';
 import { Formik, Field, Form } from 'formik';
@@ -8,12 +8,15 @@ import TextField from '@/components/form/textfield/TextField';
 import SelectField from '@/components/form/selectfield/SelectField';
 import { OptionProp } from '@/components/form/models';
 import Button from '@/components/button';
+import Modal from '@/components/modals';
 
 const ClaimTickets = () => {
+  const [showSuccessModal, setShowSuccessModal] = useState(true);
   const initialValues = {
     fullName: '',
     email: '',
     role: '',
+    customRole: '',
     expertise: '',
     size: '',
   };
@@ -25,6 +28,7 @@ const ClaimTickets = () => {
       .max(50, 'Full name must be at most 50 characters'),
     email: Yup.string().required('Email is required').email('Email is invalid'),
     role: Yup.string().required('Role is required'),
+    customRole: Yup.string(),
     expertise: Yup.string().required('Expertise is required'),
     size: Yup.string().required('Size is required'),
   });
@@ -57,9 +61,9 @@ const ClaimTickets = () => {
         <Header />
 
         <div className='claim__tickets__content'>
-          {/* <div className='claim__tickets__banner'>
+          <div className='claim__tickets__banner'>
             <Image src='/claim-ticket.svg' width={558} height={799} alt='' priority />
-          </div> */}
+          </div>
           <div className='claim__tickets__form'>
             <div className='claim__tickets__heading'>
               <h1>Register</h1>
@@ -72,7 +76,7 @@ const ClaimTickets = () => {
               onSubmit={() => {}}
               validationSchema={schema}
             >
-              {({ setFieldValue, isValid }) => (
+              {({ setFieldValue, isValid, values }) => (
                 <Form className='registration__form'>
                   <Field
                     as={TextField}
@@ -102,6 +106,18 @@ const ClaimTickets = () => {
                     id='size'
                     onChange={(valueObj: OptionProp) => setFieldValue('role', valueObj.value)}
                   />
+                  {values.role == 'Others' && (
+                    <Field
+                      as={TextField}
+                      name='customRole'
+                      id='customRole'
+                      label='Specify "Other"'
+                      placeholder='Marketing Manager'
+                      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setFieldValue('customRole', event.target.value);
+                      }}
+                    />
+                  )}
                   <Field
                     as={SelectField}
                     label='Level of Expertise'
@@ -111,7 +127,6 @@ const ClaimTickets = () => {
                     onChange={(valueObj: OptionProp) => setFieldValue('expertise', valueObj.value)}
                   />
                   <Field
-                    isMulti
                     as={SelectField}
                     label='Shirt Size'
                     placeholder='Select'
@@ -119,11 +134,15 @@ const ClaimTickets = () => {
                     id='size'
                     onChange={(valueObj: OptionProp) => setFieldValue('size', valueObj.value)}
                   />
-
-                  <Button text='Register' variant={isValid ? 'primary' : 'disabled'} />
+                  <Button
+                    onClick={() => setShowSuccessModal(true)}
+                    text='Register'
+                    variant={isValid ? 'primary' : 'disabled'}
+                  />
                 </Form>
               )}
             </Formik>
+            {<Modal isOpen={showSuccessModal} onClose={() => setShowSuccessModal(false)} />}
           </div>
         </div>
       </div>
