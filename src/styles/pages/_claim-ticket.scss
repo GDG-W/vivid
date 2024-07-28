@@ -5,7 +5,7 @@
   height: 100vh;
   padding: 0.5rem 1.5rem;
 
-  @include media('<=500px') {
+  @include media('<=tablet') {
     padding: 3rem 1rem;
   }
 
@@ -15,19 +15,22 @@
     max-width: 1200px;
     margin: 0 auto;
 
+    header {
+      padding-inline: 0px;
+    }
+
     .claim__tickets__content {
-      width: 100%;
-      margin: 1.5rem;
-      padding-block: 1.5rem;
+      padding-block: 2rem;
       display: flex;
       gap: 2.5rem;
 
-      @include media('<=1024px') {
+      @include media('<=desktop') {
         margin: 0 auto;
         gap: 1.5rem;
       }
 
       @include media('<=tablet') {
+        padding-block: 0rem;
         margin: 0.5rem;
       }
 
@@ -39,7 +42,12 @@
 
       .claim__tickets__form {
         width: 100%;
-        // padding-block: 3rem;
+        padding-block: 1.5rem;
+
+        @include media('<=tablet') {
+          padding: 0px;
+        }
+
         .claim__tickets__heading {
           margin-bottom: 2.5rem;
           h1 {

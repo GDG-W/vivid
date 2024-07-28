@@ -1,3 +1,5 @@
+@import 'utils/breakpoints';
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -9,6 +11,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
 }
 
 .modal {
@@ -71,6 +74,12 @@
       align-items: center;
       gap: 1rem;
       margin-top: 2rem;
+      button {
+        @include media('<=tablet') {
+          padding: 1rem;
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }

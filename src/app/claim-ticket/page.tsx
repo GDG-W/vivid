@@ -11,7 +11,7 @@ import Button from '@/components/button';
 import Modal from '@/components/modals';
 
 const ClaimTickets = () => {
-  const [showSuccessModal, setShowSuccessModal] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const initialValues = {
     fullName: '',
     email: '',
@@ -73,7 +73,7 @@ const ClaimTickets = () => {
             <Formik
               initialValues={initialValues}
               enableReinitialize
-              onSubmit={() => {}}
+              onSubmit={() => setShowSuccessModal(true)}
               validationSchema={schema}
             >
               {({ setFieldValue, isValid, values }) => (
@@ -134,11 +134,7 @@ const ClaimTickets = () => {
                     id='size'
                     onChange={(valueObj: OptionProp) => setFieldValue('size', valueObj.value)}
                   />
-                  <Button
-                    onClick={() => setShowSuccessModal(true)}
-                    text='Register'
-                    variant={isValid ? 'primary' : 'disabled'}
-                  />
+                  <Button text='Register' variant={isValid ? 'primary' : 'disabled'} />
                 </Form>
               )}
             </Formik>
