@@ -15,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
     variant == 'primary' && styles.primary,
     variant == 'secondary' && styles.secondary,
     variant == 'transparent' && styles.transparent,
+    variant == 'disabled' && styles.disabled,
     outlined && styles.outlined,
     others.className,
   );

@@ -1,0 +1,44 @@
+.textfield {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    display: flex;
+    gap: 5px;
+    font-weight: 500;
+
+    span:nth-child(2) {
+      color: var(--gray-60);
+    }
+  }
+
+  input {
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 500;
+    border: 0.5px solid var(--gray-60);
+    border-radius: 8px;
+    padding: 1rem 0.625rem;
+  }
+
+  .extra {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary-blue);
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .right {
+      margin-left: auto;
+    }
+  }
+}

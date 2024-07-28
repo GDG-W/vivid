@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { HeaderProps } from './models';
-// import DevFestLogo from "../../../public/icons/devfest-logo.svg"
 import styles from './header.module.scss';
 import { classNames } from '@/utils/classNames';
 

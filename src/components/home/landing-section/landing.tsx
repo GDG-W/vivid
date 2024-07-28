@@ -5,6 +5,7 @@ import styles from './landing.module.scss';
 import Header from '@/components/header';
 import Button from '@/components/button';
 import { classNames } from '@/utils/classNames';
+import ArrowRight from '../../../../public/icons/arrow-right.svg';
 import GreenCursor from '../../../../public/green-cursor.svg';
 import YellowCursor from '../../../../public/yellow-cursor.svg';
 import RedCursor from '../../../../public/red-cursor.svg';
@@ -20,8 +21,13 @@ const Landing = () => {
       <div className={styles.container}>
         <div className={styles.headernav}>
           <Header
-            handleClick={() => setOpenTicket(true)}
-            navContent={<span>Upgrade Tickets</span>}
+            handleClick={() => {}}
+            navContent={
+              <>
+                <span>Upgrade Tickets</span>
+                <ArrowRight />
+              </>
+            }
           />
         </div>
 
