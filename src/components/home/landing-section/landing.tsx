@@ -21,7 +21,7 @@ const Landing = () => {
       <div className={styles.container}>
         <div className={styles.headernav}>
           <Header
-            handleClick={() => {}}
+            handleClick={() => setOpenTicket(true)}
             navContent={
               <>
                 <span>Upgrade Tickets</span>
