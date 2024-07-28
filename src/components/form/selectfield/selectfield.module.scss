@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 8px;
   font-family: var(--generalSans);
 
   label {
@@ -29,65 +28,65 @@
     border-radius: 8px;
     background-color: white;
     padding: 1rem 0.8rem;
+  }
 
-    .menuWrapper {
+  .menuWrapper {
+    width: 100%;
+    max-width: 500px;
+    top: 110%;
+    right: 0px;
+    z-index: 10;
+    border: 0.5px solid var(--gray-60);
+    border-radius: 8px;
+    max-height: 300px;
+    overflow: auto;
+    background-color: white;
+    transform: translateY(0.25rem);
+
+    input {
       width: 100%;
-      max-width: 500px;
-      position: absolute;
-      top: 110%;
-      right: 0px;
-      z-index: 10;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 500;
       border: 0.5px solid var(--gray-60);
       border-radius: 8px;
-      max-height: 300px;
-      overflow: auto;
-      background-color: white;
-      transform: translateY(0.25rem);
+      padding: 1rem 0.625rem;
 
-      input {
-        width: 100%;
-        font-size: 1rem;
-        font-family: inherit;
-        font-weight: 500;
-        border: 0.5px solid var(--gray-60);
-        border-radius: 8px;
-        padding: 1rem 0.625rem;
-
-        &:focus {
-          outline: 0.5px solid var(--gray-60);
-        }
-      }
-
-      .menuItem {
-        padding: 1rem;
-        background-color: white;
-
-        &:hover {
-          background-color: var(--cream);
-        }
+      &:focus {
+        outline: 0.5px solid var(--gray-60);
       }
     }
 
-    .multi {
-      font-weight: 300;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+    .menuItem {
+      padding: 1rem;
+      background-color: white;
 
-      .multiItem {
-        padding: 2px 0.5rem;
-        border-radius: 8px;
+      &:hover {
+        background-color: var(--cream);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .multi {
+    font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    .multiItem {
+      padding: 2px 0.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      background-color: var(--pastel-blue);
+      color: var(--gray-80);
+
+      .pill {
         display: flex;
         align-items: center;
-        background-color: var(--pastel-blue);
-        color: var(--gray-80);
-
-        .pill {
-          display: flex;
-          align-items: center;
-          margin-left: 4px;
-          cursor: pointer;
-        }
+        margin-left: 4px;
+        cursor: pointer;
       }
     }
   }

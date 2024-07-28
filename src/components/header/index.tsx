@@ -18,11 +18,13 @@ const Header: React.FC<HeaderProps> = ({ navContent, className, handleClick }) =
           priority={true}
         />
       </span>
-      <nav>
-        <button type='button' onClick={handleClick}>
-          {navContent}
-        </button>
-      </nav>
+      {navContent && (
+        <nav>
+          <button type='button' onClick={handleClick}>
+            {navContent}
+          </button>
+        </nav>
+      )}
     </header>
   );
 };
