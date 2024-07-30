@@ -28,6 +28,7 @@ const PurchaseTicket = () => {
 
   return (
     <div className={styles.ticket_container}>
+      {/* header */}
       <div className={styles.ticket_header}>
         <div className={styles.top_pop}>
           <Image
@@ -53,12 +54,12 @@ const PurchaseTicket = () => {
           <ul className={styles.title_container_list_group}>
             {stepperLists.map((list, id) => (
               <li
+                key={id}
                 onClick={() => seActiveStep(list.value)}
                 className={`
                   ${styles.title_container_list_group_item} 
-                                ${activeStep >= list.value ? styles.title_container_list_group_active : ''}
-                                `}
-                key={id}
+                   ${activeStep >= list.value ? styles.title_container_list_group_active : ''}
+                   `}
               >
                 {list.name}
               </li>
