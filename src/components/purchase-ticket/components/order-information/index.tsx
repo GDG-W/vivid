@@ -76,60 +76,62 @@ export const OrderInformation = () => {
               This ticket belongs to me
             </label>
 
-            <div className={`${styles.or_form} ${styles.inner_form}`}>
-              <Field
-                as={TextField}
-                name='fullName'
-                id='fullName'
-                label='Full Name'
-                placeholder='Enter Full Name'
-                value={values.fullName}
-                onChange={handleChange}
-              />
+            {values.isMyTicket
+              && <div className={`${styles.or_form} ${styles.inner_form}`}>
+                <Field
+                  as={TextField}
+                  name='fullName'
+                  id='fullName'
+                  label='Full Name'
+                  placeholder='Enter Full Name'
+                  value={values.fullName}
+                  onChange={handleChange}
+                />
 
-              <Field
-                as={TextField}
-                name='email'
-                id='email'
-                label='Email address'
-                placeholder='example@gmail.com'
-                value={values.email}
-                onChange={handleChange}
-              />
+                <Field
+                  as={TextField}
+                  name='email'
+                  id='email'
+                  label='Email address'
+                  placeholder='example@gmail.com'
+                  value={values.email}
+                  onChange={handleChange}
+                />
 
-              <Field
-                as={SelectField}
-                name='role'
-                id='role'
-                label='Role'
-                placeholder='Select role'
-                options={roleOptions}
-                value={values.role}
-                onChange={handleChange}
-              />
+                <Field
+                  as={SelectField}
+                  name='role'
+                  id='role'
+                  label='Role'
+                  placeholder='Select role'
+                  options={roleOptions}
+                  value={values.role}
+                  onChange={handleChange}
+                />
 
-              <Field
-                as={SelectField}
-                name='expertLevel'
-                id='expertLevel'
-                label='Level of Expertise'
-                placeholder='Select expertise'
-                options={expertiseOptions}
-                value={values.expertLevel}
-                onChange={handleChange}
-              />
+                <Field
+                  as={SelectField}
+                  name='expertLevel'
+                  id='expertLevel'
+                  label='Level of Expertise'
+                  placeholder='Select expertise'
+                  options={expertiseOptions}
+                  value={values.expertLevel}
+                  onChange={handleChange}
+                />
 
-              <Field
-                as={SelectField}
-                name='shirtSize'
-                id='shirtSize'
-                label='Shirt Size'
-                placeholder='Select shirt size'
-                options={sizeOptions}
-                value={values.expertLevel}
-                onChange={handleChange}
-              />
-            </div>
+                <Field
+                  as={SelectField}
+                  name='shirtSize'
+                  id='shirtSize'
+                  label='Shirt Size'
+                  placeholder='Select shirt size'
+                  options={sizeOptions}
+                  value={values.expertLevel}
+                  onChange={handleChange}
+                />
+              </div>
+            }
           </form>
         )}
       </Formik>

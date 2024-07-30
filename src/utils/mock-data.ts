@@ -21,3 +21,8 @@ export const roleOptions: OptionProp[] = [
   { label: 'Technical Writer', value: 'Technical Writer' },
   { label: 'Others', value: 'Others' },
 ];
+
+export const dayOptions: OptionProp[] = [
+  { label: 'Day 1', value: '1' },
+  { label: 'Day 2', value: '2' },
+];

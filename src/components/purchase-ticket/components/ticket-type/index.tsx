@@ -5,6 +5,7 @@ import { OptionProp } from '@/components/form/models';
 import Button from '@/components/button';
 import React from 'react';
 import { TTicketNumber } from '../../model';
+import { dayOptions } from '@/utils/mock-data';
 
 interface ITicketTypeProps {
   selectDays: string;
@@ -21,15 +22,9 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
   handleChangeTicketNo,
   handleNext,
 }) => {
-  const dayOptions: OptionProp[] = [
-    { label: 'Day 1', value: '1' },
-    { label: 'Day 2', value: '2' },
-  ];
 
   const onHandleChangeSelectDays = (valueObj: OptionProp | OptionProp[]) => {
     if (Array.isArray(valueObj)) return;
-    // (valueObj: OptionProp) =>
-    console.log(valueObj);
     handleChangeSelectDays(valueObj.value);
   };
 
