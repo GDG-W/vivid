@@ -1,0 +1,11 @@
+[data-animate-sentences],
+[data-animate-text] {
+  > span {
+    overflow: hidden;
+    display: inline-flex;
+  }
+
+  span span {
+    display: inline-flex;
+  }
+}
