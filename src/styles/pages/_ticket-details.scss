@@ -18,6 +18,12 @@
     width: 100%;
     min-height: 100vh;
     max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 6rem;
+
+    @include media('<=desktop') {
+      padding-inline: 0rem;
+    }
 
     .ticket__heading {
       margin-block: 1.875rem 3.75rem;
@@ -25,7 +31,7 @@
 
       @include media('<=tablet') {
         margin-block: 1.875rem;
-        padding-inline: 1.5rem;
+        padding-inline: 1rem;
       }
 
       .ticket__title {
