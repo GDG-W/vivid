@@ -40,13 +40,154 @@ export default class HeroAnimation extends AnimationBase {
     super({
       easings,
       sourceElement: `.${sourceElementClassName}`,
-      subElements: {},
+      subElements: {
+        animateFadeInLeft: '[data-animate-fadeInLeft]',
+        animateFadeInRight: '[data-animate-fadeInRight]',
+        animateCareerCursor: '[data-animate-career-cursor]',
+        animateTicketOne: '[data-animate-ticket-one]',
+        animateTicketMiddle: '[data-animate-ticket-middle]',
+        animateTicketTwo: '[data-animate-ticket-two]',
+      },
     });
   }
 
-  protected customAnimations(): void {}
+  protected customAnimations(): void {
+    const {
+      animateFadeInLeft,
+      animateFadeInRight,
+      animateCareerCursor,
+      animateTicketOne,
+      animateTicketMiddle,
+      animateTicketTwo,
+    } = this.elements;
 
-  protected setupBaseAnimationStage() {
-    super.setupBaseAnimationStage();
+    if (animateFadeInLeft) {
+      const elements = this.normalizeToElements(animateFadeInLeft);
+
+      elements.forEach((element) => {
+        const { delay, duration, easing } = this.getAnimationValues(element);
+
+        this.animationLibrary.core.fromTo(
+          element,
+          { transform: 'translateX(-100vw)' },
+          {
+            transform: 'translateX(0)',
+            opacity: 1,
+            duration,
+            delay,
+            ease: easing,
+          },
+        );
+      });
+    }
+
+    if (animateFadeInRight) {
+      const elements = this.normalizeToElements(animateFadeInRight);
+
+      elements.forEach((element) => {
+        const { delay, duration, easing } = this.getAnimationValues(element);
+
+        this.animationLibrary.core.fromTo(
+          element,
+          { transform: 'translateX(100vw)' },
+          {
+            transform: 'translateX(0)',
+            opacity: 1,
+            duration,
+            delay,
+            ease: easing,
+          },
+        );
+      });
+    }
+
+    if (animateCareerCursor) {
+      const elements = this.normalizeToElements(animateCareerCursor);
+
+      elements.forEach((element) => {
+        const { delay, duration } = this.getAnimationValues(element);
+
+        this.animationLibrary.core.to(element, {
+          rotate: '0deg',
+          duration,
+          delay,
+          ease: easings.CAREERCURSORS.arrowRotation,
+        });
+      });
+    }
+
+    if (animateTicketOne) {
+      const elements = this.normalizeToElements(animateTicketOne);
+
+      elements.forEach((element) => {
+        this.animationLibrary.core.to(element, {
+          bottom: '-45%',
+          duration: 1,
+          delay: 0.4,
+          ease: easings.TICKETS.ticketOnePosition,
+        });
+
+        this.animationLibrary.core.to(element, {
+          bottom: '-50%',
+          duration: 1,
+          delay: 1,
+        });
+
+        this.animationLibrary.core.to(element, {
+          right: '45%',
+          rotate: '60deg',
+          duration: 1,
+          delay: 0.667,
+          ease: easings.TICKETS.ticketOneRotation,
+        });
+      });
+    }
+
+    if (animateTicketMiddle) {
+      const elements = this.normalizeToElements(animateTicketMiddle);
+
+      elements.forEach((element) => {
+        this.animationLibrary.core.to(element, {
+          bottom: '-45%',
+          duration: 1,
+          delay: 0.18,
+          ease: easings.TICKETS.ticketTwoPosition,
+        });
+      });
+    }
+
+    if (animateTicketTwo) {
+      const elements = this.normalizeToElements(animateTicketTwo);
+
+      elements.forEach((element) => {
+        this.animationLibrary.core.to(element, {
+          bottom: '-45%',
+          duration: 1,
+          delay: 0.4,
+          ease: easings.TICKETS.ticketOnePosition,
+        });
+
+        this.animationLibrary.core.to(element, {
+          bottom: '-45%',
+          duration: 1,
+          delay: 0.3,
+          ease: easings.TICKETS.ticketThreePosition,
+        });
+
+        this.animationLibrary.core.to(element, {
+          bottom: '-50%',
+          duration: 1,
+          delay: 1,
+        });
+
+        this.animationLibrary.core.to(element, {
+          left: '45%',
+          rotate: '120deg',
+          duration: 1,
+          delay: 0.667,
+          ease: easings.TICKETS.ticketThreeRotation,
+        });
+      });
+    }
   }
 }

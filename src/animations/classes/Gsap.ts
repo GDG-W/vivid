@@ -34,6 +34,7 @@ export default class GSAPAnimations {
       { scale: 0 },
       {
         scale: 1,
+        opacity: 1,
         duration,
         delay,
         ease,
@@ -46,6 +47,7 @@ export default class GSAPAnimations {
 
     gsap.to(element, {
       yPercent: 0,
+      opacity: 1,
       duration,
       ease,
       delay,

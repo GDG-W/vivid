@@ -300,8 +300,12 @@ export default abstract class AnimationBase extends Component {
 
     const datasetEasing = element.dataset.easing as keyof typeof this.easings;
 
-    const easing =
-      (getEasingFunction(datasetEasing, this.easings) as EasingFunction) || this.easings?.DEFAULT;
+    let easing: EasingFunction = this.easings?.DEFAULT as EasingFunction;
+
+    if (datasetEasing) {
+      easing =
+        (getEasingFunction(datasetEasing, this.easings) as EasingFunction) || this.easings?.DEFAULT;
+    }
 
     return {
       delay,

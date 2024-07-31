@@ -9,3 +9,12 @@
     display: inline-flex;
   }
 }
+
+[data-animate-fadeIn],
+[data-animate-scale],
+[data-animate-sentences],
+[data-animate-y-up],
+[data-animate-fadeInLeft],
+[data-animate-fadeInRight] {
+  opacity: 0;
+}

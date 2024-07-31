@@ -1,7 +1,7 @@
-import React from 'react';
-import { ButtonProps } from './models';
-import styles from './button.module.scss';
 import { classNames } from '@/utils/classNames';
+import React from 'react';
+import styles from './button.module.scss';
+import { ButtonProps } from './models';
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button className={classes}>
+    <button {...others} className={classes}>
       {text}
       {icon}
     </button>

@@ -5,7 +5,7 @@ type EasingTree = {
 };
 
 const getEasingFunction = (path: string, easings: EasingTree): EasingFunction | undefined => {
-  const keys = path.split('.');
+  const keys = path?.split('.');
 
   let current: EasingTree | EasingFunction = easings;
 
