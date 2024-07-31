@@ -1,3 +1,5 @@
+@import 'utils/breakpoints';
+
 .ticket_container {
   position: relative;
 }
@@ -14,7 +16,7 @@
   align-items: center;
   background-color: transparent;
 
-  @media (max-width: 992px) {
+  @include media('<=tablet') {
     position: unset;
     padding: 22px 22px 0;
   }
@@ -28,7 +30,7 @@
   display: inline-flex;
   align-items: center;
 
-  @media (max-width: 992px) {
+  @include media('<=tablet') {
     padding: 0;
     height: unset;
   }
@@ -42,7 +44,7 @@
   align-items: center;
   gap: 10px;
 
-  @media (max-width: 992px) {
+  @include media('<=tablet') {
     &_name {
       display: none;
     }
@@ -53,7 +55,7 @@
   padding: 1.5rem;
   border-radius: unset;
 
-  @media (min-width: 992px) {
+  @include media('>=tablet') {
     padding: 2rem;
     border-radius: 0px 0px 32px 32px;
   }
@@ -141,7 +143,7 @@
     width: 100%;
   }
 
-  @media (min-width: 992px) {
+  @include media('>=tablet') {
     flex-wrap: nowrap;
     gap: 60px;
   }

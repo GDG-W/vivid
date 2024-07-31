@@ -1,4 +1,4 @@
-import { CancelIcon } from '@/assets/svg';
+import CancelIcon from '../../../public/icons/cancel.svg';
 import styles from './ticket.module.scss';
 import Image from 'next/image';
 import React from 'react';
