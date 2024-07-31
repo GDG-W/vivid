@@ -9,7 +9,7 @@ type Easings = Record<string, EasingFunction | Record<string, EasingFunction>>;
 
 type AnimationBaseInputs = {
   sourceElement: string | HTMLElement;
-  subElements: { [key: string]: string | HTMLElement | NodeList };
+  subElements?: { [key: string]: string | HTMLElement | NodeList };
   easings: Easings;
 };
 
@@ -28,7 +28,7 @@ export default abstract class AnimationBase extends Component {
     super({
       element: input.sourceElement,
       elements: {
-        animateFadeIn: '[data-animate-fadeIn]',
+        animateFadeIn: '[data-animate-fadein]',
         animateScale: '[data-animate-scale]',
         animateYUp: '[data-animate-y-up]',
         animateText: '[data-animate-text]',
@@ -77,7 +77,7 @@ export default abstract class AnimationBase extends Component {
             // Check if 30% of the section's height is less than the screen's height
             const isShorterThanScreen = section.clientHeight * 0.3 <= window.innerHeight;
 
-            if (isShorterThanScreen && entry.intersectionRatio >= 0.3) {
+            if (isShorterThanScreen && entry.intersectionRatio >= 0.2) {
               this.triggerAnimation(observer);
             } else if (!isShorterThanScreen && entry.intersectionRatio >= 0.1) {
               this.triggerAnimation(observer);
@@ -88,7 +88,7 @@ export default abstract class AnimationBase extends Component {
       {
         root: null,
         rootMargin: '0px',
-        threshold: [0.1, 0.3],
+        threshold: [0.1, 0.2],
       },
     );
 
@@ -141,28 +141,7 @@ export default abstract class AnimationBase extends Component {
   }
 
   protected setupBaseAnimationStage() {
-    const { animateScale, animateFadeIn, animateYUp, animateText, animateSentences } =
-      this.elements;
-
-    if (animateScale) {
-      const elements = this.normalizeToElements(animateScale);
-
-      elements.forEach((element) => {
-        this.animationLibrary.core.set(element, {
-          scale: 0,
-        });
-      });
-    }
-
-    if (animateFadeIn) {
-      const elements = this.normalizeToElements(animateFadeIn);
-
-      elements.forEach((element) => {
-        this.animationLibrary.core.set(element, {
-          opacity: 0,
-        });
-      });
-    }
+    const { animateYUp, animateText, animateSentences } = this.elements;
 
     if (animateYUp) {
       const elements = this.normalizeToElements(animateYUp);
@@ -185,6 +164,7 @@ export default abstract class AnimationBase extends Component {
         // Remove margin and padding from the element
         element.style.margin = '0';
         element.style.padding = '0';
+        element.style.visibility = 'visible';
 
         if (element.parentNode) {
           element.parentNode.insertBefore(wrapper, element);
@@ -267,6 +247,8 @@ export default abstract class AnimationBase extends Component {
     const words = element.querySelectorAll('span');
     const stagger = Number(element.dataset.stagger) || 0.084;
 
+    element.style.opacity = '1';
+
     words.forEach((sentence, index) => {
       this.animationLibrary.animateYUp({
         element: sentence,
@@ -282,6 +264,8 @@ export default abstract class AnimationBase extends Component {
 
     const words = calculateSentences(element.querySelectorAll('span span'));
     const stagger = Number(element.dataset.stagger) || 0.084;
+
+    element.style.opacity = '1';
 
     words.forEach((sentence, index) => {
       this.animationLibrary.animateYUp({

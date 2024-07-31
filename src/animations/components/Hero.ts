@@ -41,8 +41,8 @@ export default class HeroAnimation extends AnimationBase {
       easings,
       sourceElement: `.${sourceElementClassName}`,
       subElements: {
-        animateFadeInLeft: '[data-animate-fadeInLeft]',
-        animateFadeInRight: '[data-animate-fadeInRight]',
+        animateFadeInLeft: '[data-animate-fadein-left]',
+        animateFadeInRight: '[data-animate-fadein-right]',
         animateCareerCursor: '[data-animate-career-cursor]',
         animateTicketOne: '[data-animate-ticket-one]',
         animateTicketMiddle: '[data-animate-ticket-middle]',
@@ -67,17 +67,13 @@ export default class HeroAnimation extends AnimationBase {
       elements.forEach((element) => {
         const { delay, duration, easing } = this.getAnimationValues(element);
 
-        this.animationLibrary.core.fromTo(
-          element,
-          { transform: 'translateX(-100vw)' },
-          {
-            transform: 'translateX(0)',
-            opacity: 1,
-            duration,
-            delay,
-            ease: easing,
-          },
-        );
+        this.animationLibrary.core.to(element, {
+          transform: 'translateX(0)',
+          opacity: 1,
+          duration,
+          delay,
+          ease: easing,
+        });
       });
     }
 
@@ -87,17 +83,13 @@ export default class HeroAnimation extends AnimationBase {
       elements.forEach((element) => {
         const { delay, duration, easing } = this.getAnimationValues(element);
 
-        this.animationLibrary.core.fromTo(
-          element,
-          { transform: 'translateX(100vw)' },
-          {
-            transform: 'translateX(0)',
-            opacity: 1,
-            duration,
-            delay,
-            ease: easing,
-          },
-        );
+        this.animationLibrary.core.to(element, {
+          transform: 'translateX(0)',
+          opacity: 1,
+          duration,
+          delay,
+          ease: easing,
+        });
       });
     }
 
@@ -160,13 +152,6 @@ export default class HeroAnimation extends AnimationBase {
       const elements = this.normalizeToElements(animateTicketTwo);
 
       elements.forEach((element) => {
-        this.animationLibrary.core.to(element, {
-          bottom: '-45%',
-          duration: 1,
-          delay: 0.4,
-          ease: easings.TICKETS.ticketOnePosition,
-        });
-
         this.animationLibrary.core.to(element, {
           bottom: '-45%',
           duration: 1,

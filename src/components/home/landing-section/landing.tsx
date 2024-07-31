@@ -31,7 +31,7 @@ const Landing = () => {
     <div className={styles.landing}>
       <div className={styles.container}>
         <div
-          data-animate-fadeIn
+          data-animate-fadein
           data-delay='0.167'
           data-easing='NAVIGATION.header'
           className={styles.headernav}
@@ -54,7 +54,7 @@ const Landing = () => {
 
         <div>
           <div
-            data-animate-fadeInLeft
+            data-animate-fadein-left
             data-easing='CAREERCURSORS.productManagerPosition'
             className={classNames(styles.careercursor, styles['careercursor--productmanager'])}
           >
@@ -63,7 +63,7 @@ const Landing = () => {
           </div>
 
           <div
-            data-animate-fadeInRight
+            data-animate-fadein-right
             data-delay='0.3'
             data-easing='CAREERCURSORS.productDesignerPosition'
             className={classNames(styles.careercursor, styles['careercursor--productdesigner'])}
@@ -99,7 +99,7 @@ const Landing = () => {
 
         <div>
           <div
-            data-animate-fadeInLeft
+            data-animate-fadein-left
             data-delay='0.4'
             data-easing='CAREERCURSORS.softwareEnginnerPosition'
             className={classNames(styles.careercursor, styles['careercursor--softwareengineer'])}
@@ -113,7 +113,7 @@ const Landing = () => {
           </div>
 
           <div
-            data-animate-fadeInRight
+            data-animate-fadein-right
             data-delay='0.2'
             data-easing='CAREERCURSORS.dataAnalystPosition'
             className={classNames(styles.careercursor, styles['careercursor--dataanalyst'])}
@@ -124,7 +124,7 @@ const Landing = () => {
         </div>
 
         <div className={styles.ticketWrapper}>
-          <div data-animate-ticket-one className={classNames(styles.ticket, styles.one)}>
+          <div className={classNames(styles.ticket, styles.one)} data-animate-ticket-one>
             <Image
               src='/green-ticket.svg'
               alt='An image of the one-day ticket'
@@ -133,7 +133,7 @@ const Landing = () => {
             />
           </div>
 
-          <div data-animate-ticket-middle className={classNames(styles.ticket, styles.middle)}>
+          <div className={classNames(styles.ticket, styles.middle)} data-animate-ticket-middle>
             <Image
               src='/blue-ticket.svg'
               alt='An image of the one-day ticket'
@@ -142,7 +142,7 @@ const Landing = () => {
             />
           </div>
 
-          <div data-animate-ticket-two className={classNames(styles.ticket, styles.two)}>
+          <div className={classNames(styles.ticket, styles.two)} data-animate-ticket-two>
             <Image
               src='/yellow-ticket.svg'
               alt='An image of the one-day ticket'

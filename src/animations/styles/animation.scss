@@ -10,11 +10,26 @@
   }
 }
 
-[data-animate-fadeIn],
-[data-animate-scale],
-[data-animate-sentences],
-[data-animate-y-up],
-[data-animate-fadeInLeft],
-[data-animate-fadeInRight] {
+[data-animate-sentences] {
   opacity: 0;
+}
+
+[data-animate-scale] {
+  scale: 0;
+}
+
+[data-animate-fadeIn] {
+  opacity: 0;
+}
+
+[data-animate-y-up] {
+  visibility: hidden;
+}
+
+[data-animate-fadein-left] {
+  transform: translateX(-100vw);
+}
+
+[data-animate-fadein-right] {
+  transform: translateX(100vw);
 }
