@@ -24,7 +24,7 @@ type AnimationBaseInputs = {
 export default abstract class AnimationBase extends Component {
   protected readonly easings: Easings = {
     ANIMATE_TEXT: CustomEase.create('text-y-up', 'M0,0 C0.15,0 0,1 1,1'),
-    ANIMATE_SCALE: CustomEase.create('scale', 'M0,0 C0.72,0 0,1 1,1'),
+    ANIMATE_SCALE: CustomEase.create('scale', 'M0,0 C0.59,0 0,1 1,1'),
     DEFAULT: CustomEase.create('default_custom', 'M0,0 C0.15,0 0,1 1,1'),
   };
 
@@ -68,7 +68,7 @@ export default abstract class AnimationBase extends Component {
 
   init() {
     this.setupBaseAnimationStage();
-    this.triggerAllAnimations();
+    // this.triggerAllAnimations();
 
     this.observeElementChange();
 
@@ -131,7 +131,7 @@ export default abstract class AnimationBase extends Component {
             // Check if 30% of the section's height is less than the screen's height
             const isShorterThanScreen = section.clientHeight * 0.3 <= window.innerHeight;
 
-            if (isShorterThanScreen && entry.intersectionRatio >= 0.2) {
+            if (isShorterThanScreen && entry.intersectionRatio >= 0.3) {
               func(observer);
             } else if (!isShorterThanScreen && entry.intersectionRatio >= 0.1) {
               func(observer);
@@ -142,7 +142,7 @@ export default abstract class AnimationBase extends Component {
       {
         root: null,
         rootMargin: '0px',
-        threshold: [0.1, 0.2],
+        threshold: [0.1, 0.3],
       },
     );
 
@@ -205,7 +205,6 @@ export default abstract class AnimationBase extends Component {
         // Remove margin and padding from the element
         element.style.margin = '0';
         element.style.padding = '0';
-        element.style.visibility = 'visible';
 
         if (element.parentNode) {
           element.parentNode.insertBefore(wrapper, element);
@@ -213,9 +212,9 @@ export default abstract class AnimationBase extends Component {
 
         wrapper.appendChild(element);
 
-        this.animationLibrary.core.set(element, {
-          yPercent: 100,
-        });
+        // this.animationLibrary.core.set(element, {
+        //   yPercent: 100,
+        // });
       });
     }
 

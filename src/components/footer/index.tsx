@@ -1,6 +1,9 @@
-import Image from 'next/image';
-import styles from './footer.module.scss';
+'use client';
+import FooterAnimation from '@/animations/components/Footer';
 import Button from '@/components/button';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+import styles from './footer.module.scss';
 
 const currentYear = new Date().getFullYear();
 
@@ -59,28 +62,40 @@ export const Footer = () => {
     footercopyright,
   } = styles;
 
-  console.log(styles);
+  const isInitialized = useRef(false);
+
+  useEffect(() => {
+    if (!isInitialized.current) {
+      new FooterAnimation(footerwrapper);
+
+      isInitialized.current = true;
+    }
+  }, []);
   return (
     <footer className={footerwrapper}>
       <div className={container}>
         <div className={footermain}>
           <div>
-            <div className={aboutpill}>
-              <p>About this event</p>
+            <div data-animate-scale data-easing='ABOUT_SCALE' className={aboutpill}>
+              <p data-animate-y-up data-delay='0.333' data-easing='ANIMATE_TEXT'>
+                About this event
+              </p>
             </div>
-            <p>
-              This event is organized by <span>Google Developer Group Lagos (GDG Lagos).</span>{' '}
-              Devfest Lagos is an annual conference for tech enthusiasts ranging from novice to
-              leaders in the industry. The event features sessions on Mental Health, Mobile, Design,
-              Web, Cloud, DevOps, Machine Learning, AR/VR, and many more.{' '}
+            <p data-animate-sentences data-delay='0.083' data-easing='ANIMATE_TEXT'>
+              This event is organized by Google Developer Group Lagos (GDG Lagos) Devfest Lagos is
+              an annual conference for tech enthusiasts ranging from novice to leaders in the
+              industry. The event features sessions on Mental Health, Mobile, Design, Web, Cloud,
+              DevOps, Machine Learning, AR/VR, and many more.{' '}
             </p>
-            <p>
+            <p data-animate-sentences data-delay='0.5' data-easing='ANIMATE_TEXT'>
               This year, Devfest Lagos will take place between 15th and 16th November 2024, at
               Landmark Events Center, Lagos. The sessions are in parallel; register for sessions
               that fit your profile or things you&apos;d like to learn about.
             </p>
             <div className={socials}>
-              <p>Follow us on:</p>
+              <p data-animate-y-up data-delay='0.75' data-easing='ANIMATE_TEXT'>
+                Follow us on:
+              </p>
               <div>
                 {socialMedia.map((social, key) => (
                   <a
@@ -89,6 +104,9 @@ export const Footer = () => {
                     rel='noopener noreferrer'
                     key={key}
                     aria-label={`Follow us on ${social.title}`}
+                    data-animate-scale
+                    data-delay={key / 10 + 0.833}
+                    data-easing='ABOUT_SCALE'
                   >
                     <Image
                       src={`/icons/${social.title}-icon.svg`}
@@ -111,12 +129,27 @@ export const Footer = () => {
                 layout='responsive'
               />
             </div>
-            <Button text='Get Early Bird Tickets' />
+
+            <Button
+              data-animate-scale
+              data-delay='0.167'
+              data-easing='ANIMATE_SCALE'
+              text={
+                <span data-animate-text data-delay='0.4'>
+                  Get Early Bird Tickets
+                </span>
+              }
+            />
 
             <div className={footerlinks}>
               <ul>
                 {footerLinks.slice(0, 3).map(({ link, title }, key) => (
-                  <li key={key}>
+                  <li
+                    data-animate-y-up
+                    data-delay={key / 10 + 0.25}
+                    data-easing='ANIMATE_TEXT'
+                    key={key}
+                  >
                     <a href={link} target='_blank' rel='noopener noreferrer' aria-label={title}>
                       {title}
                     </a>
@@ -125,7 +158,12 @@ export const Footer = () => {
               </ul>
               <ul>
                 {footerLinks.slice(3, 5).map(({ link, title }, key) => (
-                  <li key={key}>
+                  <li
+                    data-animate-y-up
+                    data-delay={key / 10 + 0.5}
+                    data-easing='ANIMATE_TEXT'
+                    key={key}
+                  >
                     <a href={link} target='_blank' rel='noopener noreferrer' aria-label={title}>
                       {title}
                     </a>
@@ -134,7 +172,12 @@ export const Footer = () => {
               </ul>
               <ul>
                 {footerLinks.slice(5, 7).map(({ link, title }, key) => (
-                  <li key={key}>
+                  <li
+                    data-animate-y-up
+                    data-delay={key / 10 + 0.67}
+                    data-easing='ANIMATE_TEXT'
+                    key={key}
+                  >
                     <a href={link} target='_blank' rel='noopener noreferrer' aria-label={title}>
                       {title}
                     </a>
@@ -144,7 +187,14 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <p className={footercopyright}>© {currentYear} Devfest Lagos. All Rights Reserved.</p>
+        <p
+          data-animate-text
+          data-delay={0.1}
+          data-easing='ANIMATE_TEXT'
+          className={footercopyright}
+        >
+          © {currentYear} Devfest Lagos. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

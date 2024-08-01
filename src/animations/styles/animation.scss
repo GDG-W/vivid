@@ -10,7 +10,8 @@
   }
 }
 
-[data-animate-sentences] {
+[data-animate-sentences],
+[data-animate-y-up] {
   opacity: 0;
 }
 
@@ -20,10 +21,6 @@
 
 [data-animate-fadein] {
   opacity: 0;
-}
-
-[data-animate-y-up] {
-  visibility: hidden;
 }
 
 [data-animate-fadein-left] {
