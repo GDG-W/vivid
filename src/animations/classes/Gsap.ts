@@ -2,7 +2,7 @@ import { EasingFunction } from '@/animations/types/gsap';
 import gsap from 'gsap';
 
 type GSAPAnimationBaseOptions = {
-  element: HTMLElement;
+  element: gsap.TweenTarget;
   delay: number;
   duration: number;
   ease?: EasingFunction;
@@ -45,12 +45,16 @@ export default class GSAPAnimations {
   animateYUp(options: GSAPAnimationBaseOptions) {
     const { element, duration, delay, ease } = options;
 
-    gsap.to(element, {
-      yPercent: 0,
-      opacity: 1,
-      duration,
-      ease,
-      delay,
-    });
+    gsap.fromTo(
+      element,
+      { yPercent: 100 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration,
+        ease,
+        delay,
+      },
+    );
   }
 }

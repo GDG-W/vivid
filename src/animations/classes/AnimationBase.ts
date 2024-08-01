@@ -2,15 +2,18 @@ import Component from '@/animations/classes/Component';
 import GSAPAnimations from '@/animations/classes/Gsap';
 import '@/animations/styles/animation.scss';
 import { EasingFunction } from '@/animations/types/gsap';
+import CustomEase from '@/animations/utils/CustomEase';
 import getEasingFunction from '@/animations/utils/getEasing';
 import { calculateSentences, formatAndSplitText } from '@/animations/utils/text';
 
 type Easings = Record<string, EasingFunction | Record<string, EasingFunction>>;
 
+type AnimationRegistry = Record<string, (element: HTMLElement) => void>;
+
 type AnimationBaseInputs = {
   sourceElement: string | HTMLElement;
   subElements?: { [key: string]: string | HTMLElement | NodeList };
-  easings: Easings;
+  easings?: Easings;
 };
 
 /**
@@ -19,7 +22,21 @@ type AnimationBaseInputs = {
  */
 
 export default abstract class AnimationBase extends Component {
-  private readonly easings: Easings = {};
+  protected readonly easings: Easings = {
+    ANIMATE_TEXT: CustomEase.create('text-y-up', 'M0,0 C0.15,0 0,1 1,1'),
+    ANIMATE_SCALE: CustomEase.create('scale', 'M0,0 C0.72,0 0,1 1,1'),
+    DEFAULT: CustomEase.create('default_custom', 'M0,0 C0.15,0 0,1 1,1'),
+  };
+
+  private animationRegistry: AnimationRegistry = {
+    text: this.animateText,
+    'y-up': this.animateYUp,
+    scale: this.animateScale,
+    fadein: this.animateFadeIn,
+    sentences: this.animateSentences,
+
+    // Add More base animations here
+  };
 
   constructor(
     input: AnimationBaseInputs,
@@ -33,41 +50,78 @@ export default abstract class AnimationBase extends Component {
         animateYUp: '[data-animate-y-up]',
         animateText: '[data-animate-text]',
         animateSentences: '[data-animate-sentences]',
+
+        // Replays animatation on Content Change
+        contentChangeTrigger: '[data-trigger-content-change]',
         ...input.subElements,
       },
     });
 
-    this.easings = input.easings;
+    if (input.easings) {
+      this.easings = { ...this.easings, ...input.easings };
+    }
+  }
 
-    const observer = this.trackWithObserver();
+  registerAnimations(animation: AnimationRegistry) {
+    this.animationRegistry = { ...this.animationRegistry, ...animation };
+  }
+
+  init() {
+    this.setupBaseAnimationStage();
+    this.triggerAllAnimations();
+
+    this.observeElementChange();
+
+    const observer = this.observeElementInView();
 
     if (this.element) {
       observer.observe(this.element);
     }
   }
 
-  /**
-   * Abstract method for custom animations.
-   * This should be implemented by subclasses.
-   * @abstract
-   */
-  protected abstract customAnimations(): void;
+  private animate(element: HTMLElement, animation: string) {
+    const animationFunction = this.animationRegistry[animation];
 
-  triggerAnimation(observer?: IntersectionObserver) {
-    this.setupBaseAnimationStage();
-    this.triggerBaseAnimations();
-    this.customAnimations();
-
-    if (observer && this.element) {
-      observer.unobserve(this.element);
+    if (animationFunction) {
+      animationFunction.call(this, element);
+    } else {
+      console.error(`No animation function registered for "${animation}"`);
     }
   }
 
-  /**
-   * Sets up an IntersectionObserver to track element visibility.
-   * @returns {IntersectionObserver} The intersection observer instance.
-   */
-  trackWithObserver() {
+  protected triggerAllAnimations() {
+    Object.values(this.elements).forEach((element) => {
+      if (!element || Array.isArray(element)) return;
+
+      this.triggerElementAnimation(element as HTMLElement);
+    });
+  }
+
+  private triggerElementAnimation(el: HTMLElement) {
+    if (el instanceof NodeList) {
+      el.forEach((el2) => this.triggerElementAnimation(el2 as HTMLElement));
+    }
+
+    const dataset = el.dataset;
+
+    for (const key in dataset) {
+      if (key.startsWith('animate')) {
+        const animationName = this.extractAnimationNameFromDataset(key);
+
+        animationName && this.animate(el, animationName);
+      }
+    }
+  }
+
+  private observeElementInView() {
+    const func = (observer: IntersectionObserver) => {
+      this.triggerAllAnimations();
+
+      if (this.element) {
+        observer.unobserve(this.element);
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.some((entry) => {
@@ -78,9 +132,9 @@ export default abstract class AnimationBase extends Component {
             const isShorterThanScreen = section.clientHeight * 0.3 <= window.innerHeight;
 
             if (isShorterThanScreen && entry.intersectionRatio >= 0.2) {
-              this.triggerAnimation(observer);
+              func(observer);
             } else if (!isShorterThanScreen && entry.intersectionRatio >= 0.1) {
-              this.triggerAnimation(observer);
+              func(observer);
             }
           }
         });
@@ -95,49 +149,36 @@ export default abstract class AnimationBase extends Component {
     return observer;
   }
 
-  triggerBaseAnimations() {
-    const { animateScale, animateFadeIn, animateYUp, animateText, animateSentences } =
-      this.elements;
+  private observeElementChange() {
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        const textNode = mutation.target as Text;
 
-    if (animateScale) {
-      const elements = this.normalizeToElements(animateScale);
+        let parentSection = textNode.parentElement;
 
-      elements.forEach((element) => {
-        this.animateScale(element as HTMLElement);
-      });
-    }
+        if (!parentSection) return;
 
-    if (animateFadeIn) {
-      const elements = this.normalizeToElements(animateFadeIn);
+        if (parentSection.dataset.triggerContentChange === undefined)
+          parentSection = parentSection.closest('[data-trigger-content-change]');
 
-      elements.forEach((element) => {
-        this.animateFadeIn(element);
-      });
-    }
+        parentSection && this.triggerElementAnimation(parentSection);
+      }
+    });
 
-    if (animateYUp) {
-      const elements = this.normalizeToElements(animateYUp);
+    const mutationObserverConfig = {
+      subtree: true,
+      characterData: true,
+    };
 
-      elements.forEach((element) => {
-        this.animateYUp(element);
-      });
-    }
+    const contentChangeTrigger = this.elements.contentChangeTrigger;
 
-    if (animateText) {
-      const elements = this.normalizeToElements(animateText);
+    if (!contentChangeTrigger) return;
 
-      elements.forEach((element) => {
-        this.animateText(element);
-      });
-    }
+    const elements = this.normalizeToElements(contentChangeTrigger);
 
-    if (animateSentences) {
-      const elements = this.normalizeToElements(animateSentences);
-
-      elements.forEach((element) => {
-        this.animateSentences(element);
-      });
-    }
+    elements.forEach((element) => {
+      observer.observe(element, mutationObserverConfig);
+    });
   }
 
   protected setupBaseAnimationStage() {
@@ -185,10 +226,6 @@ export default abstract class AnimationBase extends Component {
         formatAndSplitText(element);
 
         formatAndSplitText(element);
-
-        this.animationLibrary.core.set(element.querySelectorAll('span span'), {
-          yPercent: 100,
-        });
       });
     }
 
@@ -199,16 +236,12 @@ export default abstract class AnimationBase extends Component {
         formatAndSplitText(element);
 
         formatAndSplitText(element);
-
-        this.animationLibrary.core.set(element.querySelectorAll('span span'), {
-          yPercent: 100,
-        });
       });
     }
   }
 
   // Animate Methods
-  animateFadeIn(element: HTMLElement) {
+  private animateFadeIn(element: HTMLElement) {
     const { delay, duration, easing } = this.getAnimationValues(element);
 
     this.animationLibrary.animateFadeIn({
@@ -219,7 +252,7 @@ export default abstract class AnimationBase extends Component {
     });
   }
 
-  animateScale(element: HTMLElement) {
+  private animateScale(element: HTMLElement) {
     const { delay, duration, easing } = this.getAnimationValues(element);
 
     this.animationLibrary.animateScale({
@@ -230,7 +263,7 @@ export default abstract class AnimationBase extends Component {
     });
   }
 
-  animateYUp(element: HTMLElement) {
+  private animateYUp(element: HTMLElement) {
     const { delay, duration, easing } = this.getAnimationValues(element);
 
     this.animationLibrary.animateYUp({
@@ -241,7 +274,7 @@ export default abstract class AnimationBase extends Component {
     });
   }
 
-  animateText(element: HTMLElement) {
+  private animateText(element: HTMLElement) {
     const { delay, duration, easing } = this.getAnimationValues(element);
 
     const words = element.querySelectorAll('span');
@@ -259,7 +292,7 @@ export default abstract class AnimationBase extends Component {
     });
   }
 
-  animateSentences(element: HTMLElement) {
+  private animateSentences(element: HTMLElement) {
     const { delay, duration, easing } = this.getAnimationValues(element);
 
     const words = calculateSentences(element.querySelectorAll('span span'));
@@ -277,6 +310,7 @@ export default abstract class AnimationBase extends Component {
     });
   }
 
+  // Utils
   getAnimationValues(element: HTMLElement) {
     const delay = Number(element.dataset.delay) || 0;
 
@@ -304,5 +338,16 @@ export default abstract class AnimationBase extends Component {
     }
 
     return [input] as HTMLElement[];
+  }
+
+  extractAnimationNameFromDataset(word: string) {
+    if (!word.startsWith('animate')) return;
+
+    const animationName = word
+      .replace(/([A-Z])/g, '-$1') // Convert camelCase to kebab-case
+      .replace(/^animate-/, '') // Remove 'animate-' prefix
+      .toLowerCase(); // Convert to lowercase
+
+    return animationName;
   }
 }
