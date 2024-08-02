@@ -67,7 +67,6 @@ export default abstract class AnimationBase extends Component {
 
   init() {
     this.setupBaseAnimationStage();
-    // this.triggerAllAnimations();
 
     this.observeElementChange();
 
