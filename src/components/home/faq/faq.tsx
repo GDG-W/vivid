@@ -25,23 +25,13 @@ const FAQs = () => {
   return (
     <section className={styles.faq}>
       <div className={styles.container}>
-        <p data-animate-y-up data-easing='ANIMATE_TEXT' data-delay='0.18' className={styles.qa}>
+        <p data-animate-y-up data-delay='0.18' className={styles.qa}>
           Quick Answers
         </p>
-        <h1
-          data-animate-y-up
-          data-easing='ANIMATE_TEXT'
-          data-delay='0.12'
-          className={styles.heading1}
-        >
+        <h1 data-animate-y-up data-delay='0.12' className={styles.heading1}>
           DevFest Lagos Ticket FAQs
         </h1>
-        <h2
-          data-animate-y-up
-          data-easing='ANIMATE_TEXT'
-          data-delay='0.167'
-          className={styles.heading2}
-        >
+        <h2 data-animate-y-up data-delay='0.167' className={styles.heading2}>
           Your questions answered
         </h2>
 
@@ -64,10 +54,10 @@ const FAQs = () => {
                     height={20}
                     alt='list decorator'
                     data-animate-scale
-                    data-easing='ANIMATE_SCALE'
+                    data-easing='SCALE'
                     data-delay={index / 3 + 0.1}
                   />
-                  <span data-animate-y-up data-easing='ANIMATE_TEXT' data-delay={index / 3 + 0.1}>
+                  <span data-animate-y-up data-delay={index / 3 + 0.1}>
                     {item.category}
                   </span>
                 </button>
@@ -78,7 +68,6 @@ const FAQs = () => {
             <h1
               data-animate-y-up
               data-trigger-content-change
-              data-easing='ANIMATE_TEXT'
               data-delay='0.167'
               className={styles.tabheading}
             >

@@ -23,8 +23,7 @@ type AnimationBaseInputs = {
 
 export default abstract class AnimationBase extends Component {
   protected readonly easings: Easings = {
-    ANIMATE_TEXT: CustomEase.create('text-y-up', 'M0,0 C0.15,0 0,1 1,1'),
-    ANIMATE_SCALE: CustomEase.create('scale', 'M0,0 C0.59,0 0,1 1,1'),
+    SCALE: CustomEase.create('scale', 'M0,0 C0.59,0 0,1 1,1'),
     DEFAULT: CustomEase.create('default_custom', 'M0,0 C0.15,0 0,1 1,1'),
   };
 
@@ -211,10 +210,6 @@ export default abstract class AnimationBase extends Component {
         }
 
         wrapper.appendChild(element);
-
-        // this.animationLibrary.core.set(element, {
-        //   yPercent: 100,
-        // });
       });
     }
 

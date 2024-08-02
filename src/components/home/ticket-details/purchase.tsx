@@ -1,18 +1,33 @@
 'use client';
 
-import React from 'react';
-import styles from './purchase.module.scss';
+import PurchaseTicketsAnimation from '@/animations/components/PurchaseTickets';
+import Button from '@/components/button';
 import { classNames } from '@/utils/classNames';
 import Image from 'next/image';
-import Button from '@/components/button';
+import { useEffect, useRef } from 'react';
+import styles from './purchase.module.scss';
 
 const PurchaseYourTicket = () => {
+  const isInitialized = useRef(false);
+
+  useEffect(() => {
+    if (!isInitialized.current) {
+      new PurchaseTicketsAnimation(styles.purchase);
+
+      isInitialized.current = true;
+    }
+  }, []);
+
   return (
     <section className={styles.purchase}>
       <div className={classNames(styles.container)}>
         <div className={styles.heading}>
-          <h1>Purchase your tickets</h1>
-          <p>Purchase tickets for one or two-day access; for yourself, or your group of friends.</p>
+          <h1 data-animate-y-up className={styles.headingH}>
+            Purchase your tickets
+          </h1>
+          <p data-animate-y-up data-delay='0.083'>
+            Purchase tickets for one or two-day access; for yourself, or your group of friends.
+          </p>
         </div>
 
         <div className={styles.ticketcontent}>
@@ -23,17 +38,34 @@ const PurchaseYourTicket = () => {
             {/* <div>hello</div> */}
           </div>
           <div className={styles.ticketdetails}>
-            <h2>
+            <h2 data-animate-y-up data-delay='0.083'>
               1 day access only | <span> N20,000</span>
             </h2>
             <ul>
-              <li>Attend event for just a day of your choice </li>
-              <li>Meal Tickets</li>
-              <li>Devfest Swags</li>
-              <li>Access to workshops, sessions and talks</li>
+              <li data-animate-y-up data-delay='0.167'>
+                Attend event for just a day of your choice{' '}
+              </li>
+              <li data-animate-y-up data-delay='0.250'>
+                Access to workshops, sessions and talks
+              </li>
+              <li data-animate-y-up data-delay='0.333'>
+                Meal Tickets
+              </li>
+              <li data-animate-y-up data-delay='0.417'>
+                Devfest Swags
+              </li>
             </ul>
 
-            <Button text='Get Early Bird Tickets' />
+            <Button
+              data-animate-scale
+              data-delay='0.5'
+              data-easing='SCALE'
+              text={
+                <span data-animate-y-up data-delay='0.7'>
+                  Get Early Bird Tickets
+                </span>
+              }
+            />
           </div>
         </div>
       </div>
