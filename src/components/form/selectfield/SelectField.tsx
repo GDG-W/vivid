@@ -193,55 +193,56 @@ const SelectField = ({
         <span>{extraLabel}</span>
       </label>
 
-      <div
-        ref={inputRef}
-        className={styles.select}
-        id={id}
-        onClick={handleInputClick}
-        onKeyDown={handleInputKeyDown}
-        tabIndex={0}
-        role='button'
-        aria-haspopup='listbox'
-        aria-expanded={showMenu}
-        aria-disabled={disabled}
-      >
-        <div>{getDisplay()}</div>
-        {showMenu ? <ArrowUp /> : <ArrowDown />}
-      </div>
-
-      {showMenu && (
-        <div ref={menuRef} className={styles.menuWrapper} role='listbox' tabIndex={-1}>
-          {isSearchable && (
-            <div>
-              <input
-                className={styles.input}
-                onChange={onSearch}
-                value={searchValue}
-                ref={searchRef}
-                placeholder={searchPlaceholder ? searchPlaceholder : 'Search...'}
-                aria-label={searchPlaceholder ? searchPlaceholder : 'Search...'}
-              />
-            </div>
-          )}
-
-          {getOptions().map((option) => (
-            <div
-              key={option.value}
-              className={classNames(styles.menuItem, isSelected(option) && styles.selected)}
-              onClick={(e) => {
-                e.stopPropagation();
-                onItemClick(option);
-              }}
-              onKeyDown={(e) => handleKeyDown(e, option, onItemClick)}
-              tabIndex={0}
-              role='option'
-              aria-selected={isSelected(option)}
-            >
-              {option.label}
-            </div>
-          ))}
+      <div className={styles.selectWrapper}>
+        <div
+          ref={inputRef}
+          className={styles.select}
+          id={id}
+          onClick={handleInputClick}
+          onKeyDown={handleInputKeyDown}
+          tabIndex={0}
+          role='button'
+          aria-haspopup='listbox'
+          aria-expanded={showMenu}
+          aria-disabled={disabled}
+        >
+          <div>{getDisplay()}</div>
+          {showMenu ? <ArrowUp /> : <ArrowDown />}
         </div>
-      )}
+        {showMenu && (
+          <div ref={menuRef} className={styles.menuWrapper} role='listbox' tabIndex={-1}>
+            {isSearchable && (
+              <div>
+                <input
+                  className={styles.input}
+                  onChange={onSearch}
+                  value={searchValue}
+                  ref={searchRef}
+                  placeholder={searchPlaceholder ? searchPlaceholder : 'Search...'}
+                  aria-label={searchPlaceholder ? searchPlaceholder : 'Search...'}
+                />
+              </div>
+            )}
+
+            {getOptions().map((option) => (
+              <div
+                key={option.value}
+                className={classNames(styles.menuItem, isSelected(option) && styles.selected)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onItemClick(option);
+                }}
+                onKeyDown={(e) => handleKeyDown(e, option, onItemClick)}
+                tabIndex={0}
+                role='option'
+                aria-selected={isSelected(option)}
+              >
+                {option.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
