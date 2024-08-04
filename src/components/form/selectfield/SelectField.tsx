@@ -27,6 +27,7 @@ const SelectField = ({
 
   const searchRef = useRef<HTMLInputElement | null>(null);
   const inputRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   const handleInputClick = () => {
     if (!disabled) {
@@ -34,6 +35,44 @@ const SelectField = ({
 
       if (!showMenu && onOpen) {
         onOpen();
+      }
+    }
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleInputClick();
+    } else if (e.key === 'ArrowDown' && showMenu) {
+      e.preventDefault();
+      if (menuRef.current) {
+        const firstItem = menuRef.current.querySelector(`.${styles.menuItem}`);
+        if (firstItem) {
+          (firstItem as HTMLElement).focus();
+        }
+      }
+    }
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLDivElement>,
+    option: OptionProp,
+    onItemClick: (option: OptionProp) => void,
+  ) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onItemClick(option);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextSibling = (e.target as HTMLElement).nextElementSibling;
+      if (nextSibling) {
+        (nextSibling as HTMLElement).focus();
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const previousSibling = (e.target as HTMLElement).previousElementSibling;
+      if (previousSibling) {
+        (previousSibling as HTMLElement).focus();
       }
     }
   };
@@ -154,38 +193,55 @@ const SelectField = ({
         <span>{extraLabel}</span>
       </label>
 
-      <div ref={inputRef} className={styles.select} id={id} onClick={handleInputClick}>
-        {showMenu && (
-          <div className={styles.menuWrapper}>
-            {isSearchable && (
-              <div>
-                <input
-                  className={styles.input}
-                  onChange={onSearch}
-                  value={searchValue}
-                  ref={searchRef}
-                  placeholder={searchPlaceholder ? searchPlaceholder : 'Search...'}
-                />
-              </div>
-            )}
-
-            {getOptions().map((option) => (
-              <div
-                key={option.value}
-                className={classNames(styles.menuItem, isSelected(option) && styles.selected)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onItemClick(option);
-                }}
-              >
-                {option.label}
-              </div>
-            ))}
-          </div>
-        )}
+      <div
+        ref={inputRef}
+        className={styles.select}
+        id={id}
+        onClick={handleInputClick}
+        onKeyDown={handleInputKeyDown}
+        tabIndex={0}
+        role='button'
+        aria-haspopup='listbox'
+        aria-expanded={showMenu}
+        aria-disabled={disabled}
+      >
         <div>{getDisplay()}</div>
         {showMenu ? <ArrowUp /> : <ArrowDown />}
       </div>
+
+      {showMenu && (
+        <div ref={menuRef} className={styles.menuWrapper} role='listbox' tabIndex={-1}>
+          {isSearchable && (
+            <div>
+              <input
+                className={styles.input}
+                onChange={onSearch}
+                value={searchValue}
+                ref={searchRef}
+                placeholder={searchPlaceholder ? searchPlaceholder : 'Search...'}
+                aria-label={searchPlaceholder ? searchPlaceholder : 'Search...'}
+              />
+            </div>
+          )}
+
+          {getOptions().map((option) => (
+            <div
+              key={option.value}
+              className={classNames(styles.menuItem, isSelected(option) && styles.selected)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onItemClick(option);
+              }}
+              onKeyDown={(e) => handleKeyDown(e, option, onItemClick)}
+              tabIndex={0}
+              role='option'
+              aria-selected={isSelected(option)}
+            >
+              {option.label}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

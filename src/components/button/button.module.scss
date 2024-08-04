@@ -11,8 +11,9 @@
   font-size: 1rem;
   font-family: var(--generalSans);
   font-weight: 600;
+  min-width: 200px;
   max-width: 100%;
-  padding: 1.5rem 3.5rem;
+  padding: 1rem 3.5rem;
 
   @include media('<=tablet') {
     width: 100%;
@@ -23,11 +24,13 @@
   border: 2px solid var(--black);
   background: var(--black);
   color: var(--white);
+  border: 2px solid var(--black);
 }
 
 .secondary {
   background: var(--gray-10);
   color: var(--black);
+  border: 2px solid var(--gray-10);
 }
 
 .outlined {
