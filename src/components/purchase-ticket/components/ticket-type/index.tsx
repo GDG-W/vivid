@@ -22,7 +22,6 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
   handleChangeTicketNo,
   handleNext,
 }) => {
-
   const onHandleChangeSelectDays = (valueObj: OptionProp | OptionProp[]) => {
     if (Array.isArray(valueObj)) return;
     handleChangeSelectDays(valueObj.value);
@@ -31,7 +30,7 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
   return (
     <div className={styles.t_container}>
       <div className={styles.t_container_header}>
-        <h3 className={styles.t_container_header_title}> Ticket Type</h3>
+        <h3 className={styles.t_container_header_title}>Select your type of Ticket</h3>
         <p className={styles.t_container_header_detail}> Choose your ticket for entry pass</p>
       </div>
 
