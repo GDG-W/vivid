@@ -4,6 +4,13 @@ import * as Yup from 'yup';
 import TextField from '@/components/form/textfield/TextField';
 import SelectField from '@/components/form/selectfield/SelectField';
 import { roleOptions, sizeOptions, expertiseOptions } from '@/utils/mock-data';
+import Button from '@/components/button';
+import React from 'react';
+import { OptionProp } from '@/components/form/models';
+
+interface IOrderProps {
+  handleNext: () => void;
+}
 
 const validationSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -16,7 +23,7 @@ const validationSchema = Yup.object().shape({
   shirtSize: Yup.string().required('Shirt size is required'),
 });
 
-export const OrderInformation = () => {
+export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
   const initialValues = {
     fullName: '',
     email: '',
@@ -31,20 +38,15 @@ export const OrderInformation = () => {
       <h3 className={styles.or_container_title}>Buyer Information</h3>
 
       <Formik
+        validateOnMount
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async (values) => {
           console.log(values);
+          handleNext();
         }}
       >
-        {({
-          // touched,
-          // errors,
-          // handleBlur,
-          handleSubmit,
-          handleChange,
-          values,
-        }) => (
+        {({ setFieldValue, handleSubmit, handleChange, values, isValid }) => (
           <form className={styles.or_form} onSubmit={handleSubmit}>
             <Field
               as={TextField}
@@ -70,15 +72,16 @@ export const OrderInformation = () => {
               <Field
                 type='checkbox'
                 name='isMyTicket'
-                value={values.isMyTicket}
+                checked={values.isMyTicket}
                 onChange={handleChange}
               />
               This ticket belongs to me
             </label>
 
-            {values.isMyTicket
-              && <div className={`${styles.or_form} ${styles.inner_form}`}>
+            {values.isMyTicket && (
+              <div className={`${styles.or_form} ${styles.inner_form}`}>
                 <Field
+                  disabled
                   as={TextField}
                   name='fullName'
                   id='fullName'
@@ -89,6 +92,7 @@ export const OrderInformation = () => {
                 />
 
                 <Field
+                  disabled
                   as={TextField}
                   name='email'
                   id='email'
@@ -100,38 +104,42 @@ export const OrderInformation = () => {
 
                 <Field
                   as={SelectField}
-                  name='role'
                   id='role'
                   label='Role'
                   placeholder='Select role'
                   options={roleOptions}
                   value={values.role}
-                  onChange={handleChange}
+                  onChange={(valueObj: OptionProp) => setFieldValue('role', valueObj.value)}
                 />
 
                 <Field
                   as={SelectField}
-                  name='expertLevel'
                   id='expertLevel'
                   label='Level of Expertise'
                   placeholder='Select expertise'
                   options={expertiseOptions}
                   value={values.expertLevel}
-                  onChange={handleChange}
+                  onChange={(valueObj: OptionProp) => setFieldValue('expertLevel', valueObj.value)}
                 />
 
                 <Field
                   as={SelectField}
-                  name='shirtSize'
                   id='shirtSize'
                   label='Shirt Size'
                   placeholder='Select shirt size'
                   options={sizeOptions}
                   value={values.expertLevel}
-                  onChange={handleChange}
+                  onChange={(valueObj: OptionProp) => setFieldValue('shirtSize', valueObj.value)}
                 />
               </div>
-            }
+            )}
+
+            <Button
+              fullWidth
+              type='submit'
+              text='Proceed to checkout'
+              variant={isValid ? 'primary' : 'disabled'}
+            />
           </form>
         )}
       </Formik>

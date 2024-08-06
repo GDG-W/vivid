@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './checkout.module.scss';
 import { TTicketNumber } from '../../model';
+import Button from '@/components/button';
 
 interface ICheckoutProps {
   selectDays: string;
   ticketNo: TTicketNumber;
+  activeStep: number;
 }
 
-export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo }) => {
+export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo, activeStep }) => {
   return (
     <div className={styles.main_container}>
       <div className={styles.main_container_header}>Order summary</div>
@@ -20,8 +22,7 @@ export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo }) => 
                 <>
                   <p className={styles.main_container_body_date}>
                     {Number(selectDays) === 1 && <> 15th</>}
-                    {Number(selectDays) === 2 && <> 16th</>}
-                    November 2024
+                    {Number(selectDays) === 2 && <> 16th</>} November 2024
                   </p>
 
                   <li className={styles.main_container_body_list_group_item}>
@@ -51,6 +52,8 @@ export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo }) => 
                 <span>N20,000</span>
               </li>
             </ul>
+
+            <Button fullWidth text='Checkout' variant={activeStep === 3 ? 'primary' : 'disabled'} />
           </>
         ) : (
           <p className={styles.main_container_body_date}>

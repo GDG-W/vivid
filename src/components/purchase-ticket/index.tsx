@@ -1,6 +1,4 @@
-import CancelIcon from '../../../public/icons/cancel.svg';
 import styles from './ticket.module.scss';
-import Image from 'next/image';
 import React from 'react';
 import { Checkout } from './components/checkout';
 import { TicketType } from './components/ticket-type';
@@ -28,26 +26,6 @@ const PurchaseTicket = () => {
 
   return (
     <div className={styles.ticket_container}>
-      {/* header */}
-      <div className={styles.ticket_header}>
-        <div className={styles.top_pop}>
-          <Image
-            src='/icons/devfest-logo.svg'
-            alt='DevFest Lagos logo'
-            width={132}
-            height={34}
-            priority={true}
-          />
-        </div>
-
-        <div className={styles.top_pop}>
-          <div className={styles.cancel_text}>
-            <span className={styles.cancel_text_name}> Cancel Purchase </span>
-            <CancelIcon />
-          </div>
-        </div>
-      </div>
-
       <div className={styles.ticket_body}>
         <div className={styles.title_container}>
           <h3 className={styles.title_container_name}>Purchase Ticket</h3>
@@ -78,10 +56,16 @@ const PurchaseTicket = () => {
                 handleNext={handleNextStep}
               />
             )}
-            {(activeStep === 2 || activeStep === 3) && <OrderInformation />}
+            {activeStep >= 2 && <OrderInformation handleNext={handleNextStep} />}
+
+            {activeStep === 3 && (
+              <div className={styles.mob_checkout}>
+                <Checkout selectDays={selectDays} ticketNo={ticketNo} activeStep={activeStep} />
+              </div>
+            )}
           </div>
-          <div className={styles.wrapper_container}>
-            <Checkout selectDays={selectDays} ticketNo={ticketNo} />
+          <div className={`${styles.wrapper_container} ${styles.wrapper_sticky_top}`}>
+            <Checkout selectDays={selectDays} ticketNo={ticketNo} activeStep={activeStep} />
           </div>
         </div>
       </div>

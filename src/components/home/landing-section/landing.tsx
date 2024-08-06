@@ -71,7 +71,7 @@ const Landing = () => {
       </div>
 
       {/* Modals */}
-      <Modal open={openTicket} onClose={() => setOpenTicket(false)}>
+      <Modal showHeader open={openTicket} onClose={() => setOpenTicket(false)}>
         <PurchaseTicket />
       </Modal>
     </div>
