@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import styles from './value.module.scss';
 
 const Value = () => {
@@ -106,7 +105,7 @@ const Value = () => {
 
         <div id={styles.carousel}>
           {items.map((item, index) => (
-            <>
+            <Fragment key={index}>
               <div
                 key={index}
                 className={getClassNames(index)}
@@ -114,7 +113,7 @@ const Value = () => {
               >
                 <img src={item.src} alt='carousel item' />
               </div>
-            </>
+            </Fragment>
           ))}
         </div>
         <div className={styles.details}>

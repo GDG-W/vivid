@@ -10,5 +10,5 @@ export type ButtonProps = {
   icon?: string | ReactNode;
   outlined?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent' | 'disabled';
-  text: string;
+  text: string | React.ReactNode;
 } & Props;
