@@ -12,7 +12,7 @@ const PurchaseYourTicket = () => {
 
   useEffect(() => {
     if (!isInitialized.current) {
-      new PurchaseTicketsAnimation(styles.purchase);
+      new PurchaseTicketsAnimation(styles.purchase, styles);
 
       isInitialized.current = true;
     }
@@ -32,10 +32,42 @@ const PurchaseYourTicket = () => {
 
         <div className={styles.ticketcontent}>
           <div className={styles.imagewrapper}>
-            <div className={styles.ticketimage}>
-              <Image src='/yellow-ticket.svg' alt='An image of the one-day ticket' fill />
+            <div className={styles.headContainerWrapper}>
+              <Image
+                src='/yellow-ticket.svg'
+                alt='An image of the one-day ticket'
+                width={650}
+                height={350}
+                className={styles.headImage}
+              />
+
+              <Image
+                src='/red-ticket.svg'
+                alt='An image of the one-day ticket'
+                width={650}
+                height={350}
+                className={styles.headImage}
+                style={{ opacity: 0 }}
+              />
             </div>
-            {/* <div>hello</div> */}
+
+            <div className={styles.subTicketImageContainer}>
+              <div className={styles.border}></div>
+
+              <Image
+                src='/yellow-ticket.svg'
+                alt='An image of the one-day ticket'
+                width={83}
+                height={43}
+              />
+
+              <Image
+                src='/red-ticket.svg'
+                alt='An image of the Two-day ticket'
+                width={83}
+                height={43}
+              />
+            </div>
           </div>
           <div className={styles.ticketdetails}>
             <h2 data-animate-y-up data-delay='0.083'>
