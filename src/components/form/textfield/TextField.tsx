@@ -10,6 +10,9 @@ const TextField = ({
   placeholder,
   bottomLeft,
   bottomRight,
+  width,
+  onChange,
+  // value,
   ...inputProps
 }: TextFieldProps) => {
   return (
@@ -18,7 +21,14 @@ const TextField = ({
         <span>{label}</span>
         <span>{extraLabel}</span>
       </label>
-      <input {...inputProps} type={type} id={id} placeholder={placeholder} />
+      <input
+        {...inputProps}
+        onChange={onChange}
+        style={{ width }}
+        type={type}
+        id={id}
+        placeholder={placeholder}
+      />
       {bottomLeft ||
         (bottomRight && (
           <div className={styles.extra}>
