@@ -45,7 +45,7 @@ const Landing = () => {
         <div className={styles.ticketWrapper}>
           <div className={classNames(styles.ticket, styles.one)}>
             <Image
-              src='/yellow-ticket.svg'
+              src='https://res.cloudinary.com/defsbafq2/image/upload/v1723030368/yellow-ticket_bokooz.svg'
               alt='An image of the one-day ticket'
               fill
               priority={true}
@@ -53,7 +53,7 @@ const Landing = () => {
           </div>
           <div className={classNames(styles.ticket, styles.middle)}>
             <Image
-              src='/blue-ticket.svg'
+              src='https://res.cloudinary.com/defsbafq2/image/upload/v1723030366/blue-ticket_zqy1z2.svg'
               alt='An image of the one-day ticket'
               fill
               priority={true}
@@ -61,7 +61,7 @@ const Landing = () => {
           </div>
           <div className={classNames(styles.ticket, styles.two)}>
             <Image
-              src='/green-ticket.svg'
+              src='https://res.cloudinary.com/defsbafq2/image/upload/v1723030306/green-ticket_d973oo.svg'
               alt='An image of the one-day ticket'
               fill
               priority={true}
