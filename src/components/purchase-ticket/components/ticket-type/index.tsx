@@ -4,8 +4,11 @@ import styles from './type.module.scss';
 import { OptionProp } from '@/components/form/models';
 import Button from '@/components/button';
 import React from 'react';
-import { TTicketNumber } from '../../model';
+import { TicketPurchaseData, TTicketNumber } from '../../model';
 import { dayOptions } from '@/utils/mock-data';
+import { CacheKeys } from '@/utils/constants';
+import { useQueryClient } from '@tanstack/react-query';
+import { getOptionsValue } from '@/utils/helper';
 
 interface ITicketTypeProps {
   selectDays: number;
@@ -22,9 +25,25 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
   handleChangeTicketNo,
   handleNext,
 }) => {
+  const queryClient = useQueryClient();
   const onHandleChangeSelectDays = (valueObj: OptionProp | OptionProp[]) => {
     if (Array.isArray(valueObj)) return;
     handleChangeSelectDays(Number(valueObj.value));
+  };
+
+  const getTicketPurchaseData: TicketPurchaseData | undefined = queryClient.getQueryData([
+    CacheKeys.USER_PURCHASE_TICKET,
+  ]);
+
+  const handleProceed = () => {
+    queryClient.setQueryData([CacheKeys.USER_PURCHASE_TICKET], (prevData: TicketPurchaseData) => {
+      return {
+        ...prevData,
+        ticketNo: ticketNo,
+        selectedDay: selectDays,
+      };
+    });
+    handleNext();
   };
 
   return (
@@ -51,6 +70,10 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
                 width='135px'
                 placeholder='Select Day'
                 options={dayOptions}
+                defaultValue={getOptionsValue(
+                  getTicketPurchaseData?.selectedDay as string,
+                  dayOptions,
+                )}
                 id='selectDay'
                 onChange={onHandleChangeSelectDays}
               />
@@ -116,7 +139,7 @@ export const TicketType: React.FC<ITicketTypeProps> = ({
         variant={
           selectDays > 0 && (ticketNo.oneDay > 0 || ticketNo.twoDays > 0) ? 'primary' : 'disabled'
         }
-        onClick={handleNext}
+        onClick={handleProceed}
       />
     </div>
   );

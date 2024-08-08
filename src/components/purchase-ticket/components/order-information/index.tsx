@@ -1,5 +1,5 @@
 import styles from './order.module.scss';
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import TextField from '@/components/form/textfield/TextField';
 import SelectField from '@/components/form/selectfield/SelectField';
@@ -7,6 +7,11 @@ import { roleOptions, sizeOptions, expertiseOptions } from '@/utils/mock-data';
 import Button from '@/components/button';
 import React from 'react';
 import { OptionProp } from '@/components/form/models';
+import AttendeeGroup from './AttendeeGroup';
+import { useQueryClient } from '@tanstack/react-query';
+import { CacheKeys } from '@/utils/constants';
+import { TicketPurchaseData } from '../../model';
+import { getOptionsValue } from '@/utils/helper';
 
 interface IOrderProps {
   handleNext: () => void;
@@ -24,13 +29,32 @@ const validationSchema = Yup.object().shape({
 });
 
 export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
+  const queryClient = useQueryClient();
+  const getTicketPurchaseData: TicketPurchaseData | undefined = queryClient.getQueryData([
+    CacheKeys.USER_PURCHASE_TICKET,
+  ]);
   const initialValues = {
-    fullName: '',
-    email: '',
-    isMyTicket: false,
-    role: '',
-    expertLevel: '',
-    shirtSize: '',
+    fullName: getTicketPurchaseData?.name || '',
+    email: getTicketPurchaseData?.email || '',
+    isMyTicket: getTicketPurchaseData?.isForSelf || false,
+    role: getTicketPurchaseData?.role || '',
+    expertLevel: getTicketPurchaseData?.expertise || '',
+    shirtSize: getTicketPurchaseData?.shirtSize || '',
+  };
+
+  const handleProceed = (values: typeof initialValues) => {
+    queryClient.setQueryData([CacheKeys.USER_PURCHASE_TICKET], (prevData: TicketPurchaseData) => {
+      return {
+        ...prevData,
+        name: values.fullName,
+        email: values.email,
+        expertise: values.expertLevel,
+        isForSelf: values.isMyTicket,
+        role: values.role,
+        shirtSize: values.shirtSize,
+      };
+    });
+    handleNext();
   };
 
   return (
@@ -41,13 +65,10 @@ export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
         validateOnMount
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (values) => {
-          console.log(values);
-          handleNext();
-        }}
+        onSubmit={handleProceed}
       >
         {({ setFieldValue, handleSubmit, handleChange, values, isValid }) => (
-          <form className={styles.or_form} onSubmit={handleSubmit}>
+          <Form className={styles.or_form} onSubmit={handleSubmit}>
             <Field
               as={TextField}
               name='fullName'
@@ -78,7 +99,7 @@ export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
               This ticket belongs to me
             </label>
 
-            {values.isMyTicket && (
+            {values.isMyTicket ? (
               <div className={`${styles.or_form} ${styles.inner_form}`}>
                 <Field
                   disabled
@@ -106,9 +127,9 @@ export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
                   as={SelectField}
                   id='role'
                   label='Role'
+                  defaultValue={getOptionsValue(values.role, roleOptions)}
                   placeholder='Select role'
                   options={roleOptions}
-                  value={values.role}
                   onChange={(valueObj: OptionProp) => setFieldValue('role', valueObj.value)}
                 />
 
@@ -117,8 +138,8 @@ export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
                   id='expertLevel'
                   label='Level of Expertise'
                   placeholder='Select expertise'
+                  defaultValue={getOptionsValue(values.expertLevel, expertiseOptions)}
                   options={expertiseOptions}
-                  value={values.expertLevel}
                   onChange={(valueObj: OptionProp) => setFieldValue('expertLevel', valueObj.value)}
                 />
 
@@ -128,19 +149,28 @@ export const OrderInformation: React.FC<IOrderProps> = ({ handleNext }) => {
                   label='Shirt Size'
                   placeholder='Select shirt size'
                   options={sizeOptions}
-                  value={values.expertLevel}
+                  defaultValue={getOptionsValue(values.shirtSize, sizeOptions)}
                   onChange={(valueObj: OptionProp) => setFieldValue('shirtSize', valueObj.value)}
                 />
+
+                <Button
+                  fullWidth
+                  type='submit'
+                  text='Proceed to checkout'
+                  variant={isValid ? 'primary' : 'disabled'}
+                />
+              </div>
+            ) : (
+              <div className={styles.ticket_information}>
+                <h3 className={styles.or_container_title}>Ticket Information</h3>
+
+                <div className={styles.ticket_information_form}>
+                  <AttendeeGroup title='One-Day Access' buttonText='Save Information' />
+                  <AttendeeGroup title='Two-Day Access' buttonText='Save Information' />
+                </div>
               </div>
             )}
-
-            <Button
-              fullWidth
-              type='submit'
-              text='Proceed to checkout'
-              variant={isValid ? 'primary' : 'disabled'}
-            />
-          </form>
+          </Form>
         )}
       </Formik>
     </div>

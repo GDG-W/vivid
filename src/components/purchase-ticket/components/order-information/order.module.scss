@@ -38,3 +38,14 @@
 .inner_form {
   gap: 2rem;
 }
+
+.ticket_information {
+  padding-block: 1rem;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-block: 1rem;
+  }
+}

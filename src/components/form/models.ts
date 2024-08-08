@@ -13,14 +13,15 @@ export type OptionProp = {
 export type TextFieldProps = {
   type?: string;
   id?: string;
+  value?: string;
   label?: string;
   extraLabel?: string;
   placeholder: string;
   bottomLeft?: string | ReactNode;
   bottomRight?: string;
   width?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+  // onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+} & Omit<InputProps, 'size'>;
 
 export interface SelectFieldProps {
   id: string;

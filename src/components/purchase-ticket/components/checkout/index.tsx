@@ -22,7 +22,7 @@ export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo, activ
           <>
             <ul className={styles.main_container_body_list_group}>
               {ticketNo.oneDay > 0 && (
-                <li>
+                <li className={styles.main_container_body_list_group_item_one}>
                   <p className={styles.main_container_body_date}>
                     {selectDays === 1 && <> 15th</>}
                     {selectDays === 2 && <> 16th</>} November 2024
@@ -36,7 +36,7 @@ export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo, activ
               )}
 
               {ticketNo.twoDays > 0 && (
-                <li>
+                <li className={styles.main_container_body_list_group_item_two}>
                   <p className={styles.main_container_body_date}>15th & 16th November 2024</p>
 
                   <li className={styles.main_container_body_list_group_item}>
@@ -50,6 +50,7 @@ export const Checkout: React.FC<ICheckoutProps> = ({ selectDays, ticketNo, activ
                 <span>Subtotal </span>
                 <span>N{(oneDayTotal + twoDayTotal).toLocaleString()}</span>
               </li>
+
               <li className={styles.main_container_body_list_group_item}>
                 <span>Total </span>
                 <span>

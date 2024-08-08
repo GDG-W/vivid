@@ -12,6 +12,7 @@ const TextField = ({
   bottomRight,
   width,
   onChange,
+  // value,
   ...inputProps
 }: TextFieldProps) => {
   return (
