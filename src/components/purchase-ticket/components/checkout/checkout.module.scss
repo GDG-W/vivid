@@ -27,7 +27,6 @@
       color: #1c1c1c;
       font-size: 16px;
       font-weight: 400;
-      // margin-bottom: 0.65rem;
     }
 
     &_list_group {
@@ -37,9 +36,15 @@
       gap: 1rem;
       margin-bottom: 1rem;
 
+      > li:nth-child(2),
+      li:first-child {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
       &_item {
         padding-bottom: 1rem;
-        // border-bottom: 1px solid #cccccc;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -47,11 +52,11 @@
         font-weight: 500;
         color: #808080;
 
-        &:first-child {
+        span:first-child {
           color: #1c1c1c;
         }
 
-        &:last-child {
+        span:last-child {
           color: #1c1c1c;
           font-weight: 600;
           border: none;

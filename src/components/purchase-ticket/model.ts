@@ -1,4 +1,4 @@
 export type TTicketNumber = {
-  oneDay: string;
-  twoDays: string;
+  oneDay: number;
+  twoDays: number;
 };

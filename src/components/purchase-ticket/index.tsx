@@ -7,10 +7,10 @@ import { TTicketNumber } from './model';
 
 const PurchaseTicket = () => {
   const [activeStep, seActiveStep] = React.useState<number>(1);
-  const [selectDays, setSelectDays] = React.useState<string>('0');
+  const [selectDays, setSelectDays] = React.useState<number>(0);
   const [ticketNo, setTicketNo] = React.useState<TTicketNumber>({
-    oneDay: '0',
-    twoDays: '0',
+    oneDay: 0,
+    twoDays: 0,
   });
 
   const stepperLists = [
